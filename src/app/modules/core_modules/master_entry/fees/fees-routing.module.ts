@@ -7,6 +7,7 @@ import { EditFeesComponent } from './edit-fees/edit-fees.component';
 import { ManageFeesComponent } from './manage-fees/manage-fees.component';
 import { AddFeetypeComponent } from './add-feetype/add-feetype.component';
 import { AddFeeyearComponent } from './add-feeyear/add-feeyear.component';
+import { AddSubgroupComponent } from './add-subgroup/add-subgroup.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,13 @@ const routes: Routes = [
         component: AddFeetypeComponent,
         data: {
           title: 'Add Fees Type'
+        }
+      },
+      {
+        path: 'add-subgroup',
+        component: AddSubgroupComponent,
+        data: {
+          title: 'Add Sub Group'
         }
       }
      

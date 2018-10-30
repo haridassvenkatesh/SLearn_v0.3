@@ -108,6 +108,10 @@ export const navigation = [
         name: 'Add Fees Year',
         url: '/fees/add-feeyear',
         icon: 'icon-hourglass'
+      },{
+        name: 'Add Sub Group',
+        url: '/fees/add-subgroup',
+        icon: 'icon-hourglass'
       }
      
     ]

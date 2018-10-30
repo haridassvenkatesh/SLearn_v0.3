@@ -1,4 +1,3 @@
-
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
@@ -14,36 +13,33 @@
                 <div class="input-prepend input-group">
                   <input class="form-control" [(ngModel)]="fees.name" name="fees.name" type="text">
                 </div>
-
               </div>
             </div>
           </div>
-
           <div class="col-md-6">
-            <button class="btn btn-sm btn-primary add_btn" type="submit" (click)="submitFeeType(fees)" >
+            <button class="btn btn-sm btn-primary add_btn" type="submit" (click)="submitFeeType(fees)">
               <i class="fa fa-dot-circle-o"></i> Add</button>
           </div>
         </div>
       </form>
       <div class="row feetype_table">
-      
-            <table class="table table-responsive-sm table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Fee Type</th>                  
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let fees_type of data">
-                      <td>{{fees_type.id}}</td> 
-                      <td>{{fees_type.name}}</td>
-                      <td><i class="fa fa-times-circle" aria-hidden="true"></i></td>
-                   </tr>                                                                                                                 
-              </tbody>
-            </table>
-          
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Fee Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fees_type of data">
+              <td>{{fees_type.id}}</td>
+              <td>{{fees_type.name}}</td>
+              <td><i class="fa fa-times-circle del_icon" aria-hidden="true"></i></td>
+            </tr>
+          </tbody>
+        </table>
+
 
       </div>
     </div>
