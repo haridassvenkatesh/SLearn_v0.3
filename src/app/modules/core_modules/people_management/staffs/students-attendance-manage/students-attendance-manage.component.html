@@ -1,0 +1,168 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-8">
+        Attendance
+      </div>
+    </div>
+
+    <form (ngSubmit)="get_attendnace()" >
+    <div class="row">
+      <div class="col-md-3">
+        <select id="batch" name="atten_batch" (change)="change_batch($event.target.value)" class="form-control">
+          <option value="-1">-Select-</option>
+          <option value="{{batch.id}}" *ngFor="let batch of batch_data">{{batch.name}}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <ng-datepicker class="ng_date_picker" [(ngModel)]="atten_date" name="atten_date" [(options)]="options" ></ng-datepicker> 
+      </div>
+      <div class="col-md-3">
+        <select (change)="Select_session($event.target.value)" class="form-control" name="atten_session">
+          <option value="0">Select Session</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+          <button type="submit"  class="btn btn-sm btn-primary atten_search" ><i class="fa fa-search"></i>  Search
+            </button>
+      </div>  
+      
+    </div>
+    </form>
+
+  </div>
+
+  <form (ngSubmit)="atten_Submit()" >
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card text-white ">
+              <div class="card-body pb-0 col_title">
+                <span>Absent</span>
+              </div>
+
+              <div class="card-body card_place">
+
+                <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload1" (drop)="onDrop('absentlist', $event,'1')">
+                  <smooth-dnd-draggable *ngFor="let item of absentlist">
+                    <div class="draggable-item">
+                      <div class="sub_panel" value="hari">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img src="assets/img/avatars/user_img_1.png" alt="user" style="background: #da365c;
+                                        width: 46px;height: 46px;" />
+                              </div>
+                              <div class="col-sm-8">
+                                <h6>
+                                  <b>{{item.userRepoId}}</b>
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </smooth-dnd-draggable>
+                </smooth-dnd-container>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card text-white ">
+              <div class="card-body pb-0 col_title">
+                <span>Students</span>
+              </div>
+              <div class="card-body card_place">
+                <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload2" (drop)="onDrop('staffatt', $event,'2')">
+                  <smooth-dnd-draggable *ngFor="let item of staffatt">
+                    <div class="draggable-item">
+                      <div class="sub_panel" value="hari">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img src="assets/img/avatars/user_img_1.png" alt="user" style="background: #da365c;
+                                          width: 46px;height: 46px;" />
+                              </div>
+                              <div class="col-sm-8">
+                                <h6>
+                                  <b>{{item.userRepoId}}</b>
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </smooth-dnd-draggable>
+                </smooth-dnd-container>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card text-white ">
+              <div class="card-body pb-0 col_title">
+                <span>Present</span>
+              </div>
+              <div class="card-body card_place">
+                <smooth-dnd-container [groupName]="'1'" [getChildPayload]="getChildPayload3" (drop)="onDrop('presentlist', $event)">
+                  <smooth-dnd-draggable *ngFor="let item of presentlist">
+
+                    <div class="draggable-item">
+                      <div class="sub_panel" value="hari">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img src="assets/img/avatars/user_img_1.png" alt="user" style="background: #da365c;
+                                      width: 46px;height: 46px;" />
+                              </div>
+                              <div class="col-sm-8">
+                                <h6>
+                                  <b>{{item.userRepoId}}</b>
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </smooth-dnd-draggable>
+                </smooth-dnd-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" (click)="submitAttendance()" class="btn btn-sm btn-primary">
+          <i class="fa fa-dot-circle-o"></i> Submit
+        </button>
+
+        <button type="reset" class="btn btn-sm btn-danger">
+          <i class="fa fa-ban"></i> Reset
+        </button>
+      </div>
+
+  </div>
+
+  </form>

@@ -1,0 +1,52 @@
+
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-rupee"></i>Add Fee Year
+    </div>
+    <div class="card-body">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="fees_year.name">Fee Year</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <input class="form-control" [(ngModel)]="fees_year.name" name="fees_year.name" type="text">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <button class="btn btn-sm btn-primary add_btn" type="submit" (click)="submitFeeYear(fees_year)" >
+              <i class="fa fa-dot-circle-o"></i> Add</button>
+          </div>
+        </div>
+      </form>
+      <div class="row feetype_table">
+      
+            <table class="table table-responsive-sm table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Fee Year</th>                  
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let fees_type of data">
+                      <td>{{fees_type.id}}</td> 
+                      <td>{{fees_type.name}}</td>
+                      <td><i class="fa fa-times-circle" aria-hidden="true"></i></td>
+                   </tr>                                                                                                                 
+              </tbody>
+            </table>
+          
+
+      </div>
+    </div>
+
+
+  </div>

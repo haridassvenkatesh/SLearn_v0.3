@@ -1,0 +1,58 @@
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
+  }
+  /* high-performance display:none; helper */
+  .gu-hide {
+    left: -9999px !important;
+  }
+  /* added to mirrorContainer (default = body) while dragging */
+  .gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+  /* added to the source element while its mirror is dragged */
+  .gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+  }
+  .time_table .panel-body{
+    width: 100%;
+    background: #0091d5;
+    text-align: center;
+    color: #FFF;
+    margin-top: -15px;
+  }  
+  
+  .drop_place{
+    border: 1px solid #CCC;
+    text-align: center;
+    margin: -2px -2px -2px -2px;
+    background: #4dbd74;
+    color: #FFF;
+  }
+  
+  drag-scroll {
+      height: 250px;
+      width: 1000px;
+    }
+    img {
+      height: 250px;
+      width: 250px;
+      border:1px solid #CCC;
+    }
+  .sub_panel{
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #CCC;
+    background: #f86c6b;
+    color: #FFF;
+  }   

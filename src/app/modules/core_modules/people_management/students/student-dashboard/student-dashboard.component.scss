@@ -1,0 +1,260 @@
+.droplet {
+  /* background: mediumaquamarine;
+  border-radius: 2% 50%;
+  height: 100px;
+  margin: 100px; */
+  transition: all 3s;
+  /* transition-timing: ease-in-out; */
+  width: 100px;
+}
+// .droplet:hover {
+//  // transform: rotate(1080deg);
+// }
+
+
+.carosel_img img{
+  height:290px;
+}
+
+.card-body h5{
+text-align:center;
+}
+
+.dashb_top_img{
+  width: 208px;
+  margin: 20px 5px;
+}
+
+.dash_progress{
+  text-align:center;
+  margin:5px;
+}
+
+.dash_progress .value{
+margin-bottom:5px;
+}
+
+.co_curricular img{ 
+border-radius:100px;
+}
+
+.bg_attendance{
+  background:#7fa8bd;
+} 
+
+.work_flow li .desc{
+  border-bottom:none;
+}
+
+.work_flow li{
+ 
+  height:56px;
+}
+
+.work_flow_bar{
+  width:150px!important;
+  top:18px!important;
+}
+
+.workflow_btn{
+  width:100px!important;
+}
+
+.cal_img{
+  width:33px;
+}
+
+.fus_chart{
+  margin-left:-13px!important;
+}
+
+[class*="creditgroup"]{
+  display: none!important;
+}
+
+.icons-list li .desc{
+  border-bottom:none;
+}
+
+.task_time{
+  background: #1f91d5;
+  border-radius: 32px;
+  float: right;
+  color: #FFF;
+  padding: 4px;
+
+}
+
+
+.pagination{
+  font-size: 11px;
+  margin: 10px 2px 1px -30px;
+}
+
+.pagi_wrk{
+  float:right;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+
+.dashb_star_img{
+  width: 210px;
+//  margin-top: 91px;
+}
+
+.card {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+       box-shadow: 0 10px 6px -6px #777;
+}
+.icons-list li{
+  height: 80px;
+  margin-left: -20px;
+  margin-right: -20px;
+  border-bottom: 1px solid #CCC;
+}
+
+.stu_dash_icon{
+  background: #1e91d5;
+  border-radius: 20px;
+}
+
+.leave_icon_letter{
+  color: #FFF;
+  font-weight: 800;
+  font-style: initial;
+}
+
+.leave_list_design{
+ margin: 10px;
+ margin-top: 8px;
+}
+.stu_events{
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.stucont_body{
+  min-height: 440px;
+}
+
+.marks {
+  font-size: 10px;
+  margin: 11px 19px;
+}
+
+.total_score{
+ 
+  padding: 0px 2px 0px 5px;
+  width: max-content;
+}
+.ur_score{
+ 
+  padding: 0px 2px 0px 5px;
+  width: max-content;
+}
+.cre_weight{
+ 
+  padding: 0px 2px 0px 5px;
+  width: max-content;
+ 
+}
+
+.marks_bar{
+  margin:-4px;
+}
+
+.batch_timetable{
+  padding:10px;
+}
+
+.batch_timetable th, .batch_timetable td{
+  padding: 8px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.batch_timetable tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+.batch_timetable thead{
+background: #20a8d8;
+color: #FFF;
+}
+.timetble_body{
+  padding: 37px;
+}
+
+.timetble_body{
+  padding: 37px;
+}
+.desc span{
+  float: right;
+  margin-top: -20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.desc i{
+  width: 10px!important;
+  height: 10px!important;
+  line-height: 10px!important;
+}
+.leave_date {
+  margin-left: 0px;
+}
+.leave_dt{
+  margin-left: 0px;
+  margin-right:0px;
+  
+}
+
+.total_score span{
+  background: #1f91d5;
+    border-radius: 16px;
+    color: #FFF;
+    font-size: 11px;
+    padding: 4px;
+}
+
+.ur_score span{
+  background: #d51f7a;
+    border-radius: 16px;
+    color: #FFF;
+    font-size: 10px;
+    padding: 4px;
+}
+
+.cre_weight span{
+  background: #488f06;
+    border-radius: 16px;
+    color: #FFF;
+    font-size: 11px;
+    padding: 4px;
+}
+
+.side_rib{
+  width: 92px;
+  float: right;
+  margin-left: 8px;
+  margin-right: -8px;
+  margin-top: 21px;
+}
+.manidatory_rib{
+  width: 50px;
+    float: right;
+    margin: -5px;
+}
+
+small, .small{
+  font-size: 70%;
+  font-weight: 400;
+}
+.course_name{
+  float: right;
+    margin-right: -91px;
+    font-size: 12px;
+    color: #FFF;
+    margin-top: 4px;
+}

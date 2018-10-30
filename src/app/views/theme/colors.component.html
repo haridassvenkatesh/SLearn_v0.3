@@ -1,0 +1,322 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          Approval
+          <div class="card-actions">
+            <a href="#" class="btn-setting"><i class="icon-settings"></i></a>         
+          </div>
+        </div>
+         
+          <ul class="icons-list work_approve">
+              <li *ngFor="let appr of approval | paginate: { itemsPerPage:3, currentPage:p }">
+                <i class=""><img  class="cal_img" src="assets/img/staff_dashboard/student/{{appr.stu_img}}" alt="slid_1"></i>
+                <div class="desc">
+                  <div class="title">{{appr.name}}</div>
+                  <small>{{appr.std}}</small>
+                  <small class="leave_req">{{appr.type}}</small>
+                  
+                </div>                
+                <div class="actions workflow_btn">
+                    <button type="button" class="btn btn-success btn-sm">Approve</button>
+                </div>                                  
+              </li>
+             </ul>
+             <div class="pagi_staff">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>             
+      </div>
+    </div><!--/.col-->
+    
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+          <div class="card-header">
+              Attendance
+              <div class="card-actions">
+                <a href="#" class="btn-setting"><i class="icon-settings"></i></a>         
+              </div>
+          </div>
+          <div [chart] ="chart"></div>
+          
+          <div class="attendance_bottom">
+            Leave Available : 6CL / 3ML / 3 LOP
+          </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+          <div class="card-header">
+              Examination
+          </div>
+           <div class="row">
+              <div class="col-md-6">
+                  <div [chart] ="exam1"></div>
+              </div>
+              <div class="col-md-6">
+                <div [chart] ="exam1"></div>
+              </div>
+          </div> 
+
+          <div class="row">
+              <div class="col-md-6">
+                <div [chart] ="exam1"></div>
+              </div>
+              <div class="col-md-6">
+                <div [chart] ="exam1"></div>
+              </div>
+          </div> 
+         
+      </div>
+    </div><!--/.col-->
+    
+
+  </div><!--/.row-->
+  
+  
+  <div class="row">
+   
+    <div class="col-md-7">
+        <div class="card">
+          <div class="card-header">
+            Timetable
+          </div>
+          <div class="card-body">
+            <div class="row">              
+                <img src="assets/img/staff_dashboard/time_table.png" style="width: 100%;margin-top: 46px;" alt="time_table">
+            </div><!--/.row-->
+           
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+          <div class="card">
+            <div class="card-header">
+              Course Completion
+            </div>
+            <div class="card-body">
+                
+                <div>
+                  <tabset>
+                    <tab heading="Maths" id="tab1">
+                      <ul class="icons-list certification" >
+                        <li *ngFor="let cour of course_completion" >
+                          <i class=""><img  class="certi_img" src="assets/img/staff_dashboard/course/{{cour.cou_img}}" alt="slid_1"></i>
+                          <div class="certifi_title">
+                            <div class="title">{{cour.course}}</div>                            
+                          </div> 
+                          <div class="course_chart" >
+                            <div [chart] ="course"></div>
+                          </div>                                                                      
+                        </li>
+                                                 
+                    </ul>
+                    </tab>
+                    <tab heading="Science">Basic content 1</tab>
+                    <tab heading="Social Science">Basic content 2</tab>
+                  </tabset>
+                </div>  
+            </div>
+          </div>
+        </div><!--/.col-->    
+  </div><!--/.row-->
+
+
+  <div class="row">
+      <div class="col-md-7">
+        <div class="card">
+          <div class="card-header">
+            Notice Board
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">                 
+                  <ul class="icons-list certification" *ngFor="let notifi of noticeboard | paginate: { itemsPerPage:3, currentPage:q }" >
+                      <li>
+                        <i class=""><img  class="certi_img" src="assets/img/staff_dashboard/notification/noti_1.png" alt="slid_1"></i>
+                        <div class="certifi_title">
+                          <div class="title">{{notifi.text}}</div>                            
+                        </div>                                                                     
+                      </li>                      
+                  </ul>   
+                  <div class="pagi_notifi">
+                    <pagination-controls (pageChange)="q = $event"></pagination-controls>
+                  </div>                                                                   
+              </div><!--/.col-->
+              
+            </div><!--/.row-->           
+          </div>         
+        </div>
+      </div><!--/.col-->
+
+
+      <div class="col-md-5">
+          <div class="card">
+            <div class="card-header">
+              Certification
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                    <ul class="icons-list certification" *ngFor="let certifi of certification | paginate: { itemsPerPage:3, currentPage:r }" >
+                        <li>
+                          <i class=""><img  class="certi_img" src="assets/img/staff_dashboard/certification/certi_1.png" alt="slid_1"></i>
+                          <div class="certifi_title">
+                            <div class="title">{{certifi.text1}}</div>                            
+                          </div>                                                                       
+                        </li>                        
+                    </ul>    
+                    <div class="pagi_notifi">
+                      <pagination-controls (pageChange)="r = $event"></pagination-controls>
+                    </div>                                                         
+                </div><!--/.col-->
+              </div><!--/.row-->
+             
+            </div>
+          </div>
+        </div><!--/.col--> 
+  </div>
+
+</div>
+
+<style>
+
+  .certi_img{
+    width: 40px;
+    border-radius: 41px;
+    margin: 4px 10px 16px 2px;
+    border: 1px solid #ccc;
+
+  }
+
+  .carosel_img img{
+    height:290px;
+  }
+  
+  .card-body h5{
+  text-align:center;
+  }
+  
+  .dashb_top_img{
+    width: 208px;
+    margin: 20px 5px;
+  }
+  
+  .dash_progress{
+    text-align:center;
+    margin:5px;
+  }
+  
+  .dash_progress .value{
+  margin-bottom:5px;
+  }
+  
+  .co_curricular img{ 
+  border-radius:100px;
+  }
+  
+  .bg_attendance{
+    background:#7fa8bd;
+  } 
+  
+  .tasks{
+    border-right:1px solid #ccc;
+  }
+  
+  .icons-list li{
+    position: relative;
+    height: 90px;
+    vertical-align: middle;
+    border-bottom: 1px solid #ccc;
+    line-height: 25px;
+  }
+
+  .certification li{
+    position: relative;
+    height: 60px;
+    vertical-align: middle;
+    border-bottom: 1px solid #ccc;
+    line-height: 25px;
+  }
+  .work_approve li .desc{
+    border-bottom:none;
+  }
+
+  .work_approve li .actions{
+    top: 7px;
+  }
+
+  .work_flow li .desc{
+    border-bottom:none;
+  }
+  
+  .work_flow_bar{
+    width:150px!important;
+    top:18px!important;
+  }
+  
+  .workflow_btn{
+    width:100px!important;
+  }
+  
+  .cal_img{
+    width: 43px;
+    border-radius: 41px;
+    margin: 10px 10px 16px 2px;
+    border: 1px solid #ccc;
+  }
+
+  .certification .certifi_title{
+    margin-left:33px;
+   
+  }
+
+ .certifi_title .title{
+  margin-left:30px;
+ }
+
+ .icons-list .certification{
+    position: relative;
+    height: 70px;
+    vertical-align: middle;
+    /* border-bottom: 1px solid #ccc; */
+    line-height: 25px;
+ }
+
+ .leave_req{
+  color: #f00!important;
+  font-weight: 700;
+ }
+
+.attendance_bottom{
+    margin: 13px;
+    text-align: center;
+    font-weight: 700;
+    border-top: 1px solid #ccc;
+}
+.course_chart{
+  float: right;
+  margin-top: -35px;
+}
+
+.icons-list li .desc{
+  margin-left: 60px;
+}
+
+.cal_img[_ngcontent-c0]{
+  margin: 14px 18px 20px 5px;
+}
+ 
+.pagi_staff{
+  margin-top: 9px;
+  margin-bottom: -6px;
+} 
+
+.pagi_notifi{
+  float: right;
+  margin-top: 12px;
+  margin-bottom: -25px;
+}
+  </style> 
+  

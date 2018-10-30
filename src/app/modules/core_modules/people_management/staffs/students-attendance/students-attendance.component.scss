@@ -1,0 +1,34 @@
+drag-scroll {
+    height: 250px;
+    width: 1000px;
+  }
+  img {
+    height: 250px;
+    width: 250px;
+    border:1px solid #CCC;
+  }
+  .col_title{
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  background: #1fa8d9;
+  color: #FFF;
+  }
+  .card_place{
+      height:400px;
+      overflow-y: scroll;
+  }
+  .sub_panel{
+      border: 1px solid #CCC;
+  background: #f3eeee;
+  color: #656464;
+  margin: 0px;
+  }
+ .panel-body{
+  margin: 8px;
+ }
+ .sub_panel{
+     margin-top:7px;
+     -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+     box-shadow: 0 10px 6px -6px #777;
+ }

@@ -1,0 +1,125 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-header">
+          <strong *ngIf="!updateButton">Add Assessment</strong>
+          <strong *ngIf="updateButton">Update Assessment</strong>
+        </div>
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.name">Name</label>
+                <div class="col-md-9">
+                  <input type="text" [(ngModel)]="assessment.name" id="assessment.name" name="assessment.name" class="form-control"
+                    placeholder="Assessment Name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.totalScore">Total Score</label>
+                <div class="col-md-9">
+                  <input type="text" [(ngModel)]="assessment.totalScore" id="assessment.totalScore" name="assessment.totalScore"
+                    class="form-control" placeholder="Total Score">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.beginTimestamp">Begin Time</label>
+                <div class="col-md-9">
+                  <ng-datepicker class="ng_date_picker" [(ngModel)]="assessment.beginTimestamp" [(options)]="options"></ng-datepicker>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="BatchID">Batch</label>
+                <div class="col-md-9">
+                  <select [(ngModel)]="BatchID" id="BatchID" name="BatchID" class="form-control" (change)="onChangeBatch($event.target.value)">
+                    <option value="-1">-Select Batch-</option>
+                    <option value="{{batch.id}}" *ngFor="let batch of batchs">{{batch.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="typeID">Type</label>
+                <div class="col-md-9">
+                  <select [(ngModel)]="typeID" id="typeID" name="typeID" class="form-control" (change)="onChangeType($event.target.value)">
+                    <option value="-1">-Select Type-</option>
+                    <option value="{{type.name}}" *ngFor="let type of assessmentType">{{type.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.description">Description</label>
+                <div class="col-md-9">
+                  <input type="text" [(ngModel)]="assessment.description" id="assessment.description" name="assessment.description"
+                    pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" class="form-control" placeholder="Description">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.creditWeight">Credit Weight</label>
+                <div class="col-md-9">
+                  <input type="text" [(ngModel)]="assessment.creditWeight" id="assessment.creditWeight" name="assessment.creditWeight"
+                    class="form-control" placeholder="Credit Weight">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="assessment.endTimestamp">End Time</label>
+                <div class="col-md-9">
+                  <ng-datepicker class="ng_date_picker" [(ngModel)]="assessment.endTimestamp" [(options)]="options"></ng-datepicker>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="CourseID">Course Name</label>
+                <div class="col-md-9">
+                  <select [(ngModel)]="CourseID" id="CourseID" name="CourseID" class="form-control" (change)="onChangeCourse($event.target.value)">
+                    <option value="-1">-Select Course-</option>
+                    <option value="{{course.id}}" *ngFor="let course of courses">{{course.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer" *ngIf="!updateButton">
+          <button type="submit" class="btn btn-sm btn-primary" (click)="submitAssessment(assessment, CourseID)">
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+
+          <button type="reset" class="btn btn-sm btn-danger">
+            <i class="fa fa-dot-circle-o" (click)="flushAssessment()"></i> Reset
+          </button>
+        </div>
+
+        <div class="card-footer" *ngIf="updateButton">
+          <button type="submit" class="btn btn-sm btn-primary" (click)="updateAssessment(assessment, updateDataID)">
+            <i class="fa fa-dot-circle-o"></i> Update
+          </button>
+
+          <button type="submit" class="btn btn-sm btn-danger" [routerLink]="['/course/course-list']">
+            <i class="fa fa-dot-circle-o"></i> Cancel
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

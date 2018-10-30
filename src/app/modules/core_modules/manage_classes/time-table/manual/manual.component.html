@@ -1,0 +1,257 @@
+<aw-wizard>
+
+  <aw-wizard-step stepTitle="Select Batch" awOptionalStep>
+
+    <div class="card">
+      <div class="card-header">
+        Select Batch
+      </div>
+      <div class="card-body">
+
+        <div class="checkbox" *ngFor="let batch of Batchs">
+          <label for="{{batch.name}}">
+            <input type="checkbox" (change)="filterBatch(batch.id,$event)" id="{{batch.id}}" name="{{batch.name}}"
+              value="{{batch.id}}"> {{batch.name}}
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <button type="button" (click)="flushSessions()" awNextStep>Next Step</button>
+  </aw-wizard-step>
+
+  <aw-wizard-step stepTitle="Course Mapping">
+    <form (ngSubmit)="tt_Submit()">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-10">
+              <table class="table table-bordered time_table">
+                <thead style="text-align:center;">
+                  <tr>
+                    <th>Weeday</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>Monday</b></td>
+                    <td *ngFor="let row of monday; let i = index">
+                      <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_mon($event,i)">
+                        <div class="panel-heading" style="visibility: hidden">
+                          {{row}}
+                        </div>
+                        <div class="panel-body">
+                          <div *ngFor="let data of monday_sub[i]">
+                            {{data.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Tuesday</b></td>
+                    <td *ngFor="let row of tuesday let i = index">
+                      <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_tue($event,i)">
+                        <div class="panel-heading" style="visibility: hidden">
+                          {{row}}
+                        </div>
+                        <div class="panel-body">
+                          <div *ngFor="let data of tuesday_sub[i]">
+                            {{data.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Wednesday</b></td>
+                    <td *ngFor="let row of wednesday let i = index">
+                      <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_wed($event,i)">
+                        <div class="panel-heading" style="visibility: hidden">
+                          {{row}}
+                        </div>
+                        <div class="panel-body">
+                          <div *ngFor="let data of wednesday_sub[i]">
+                            {{data.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Thursday</b></td>
+                    <td *ngFor="let row of thursday let i = index">
+                      <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_thu($event,i)">
+                        <div class="panel-heading" style="visibility: hidden">
+                          {{row}}
+                        </div>
+                        <div class="panel-body">
+                          <div *ngFor="let data of thursday_sub[i]">
+                            {{data.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Friday</b></td>
+                    <td *ngFor="let row of friday let i = index">
+                      <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_fri($event,i)">
+                        <div class="panel-heading" style="visibility: hidden">
+                          {{row}}
+                        </div>
+                        <div class="panel-body">
+                          <div *ngFor="let data of friday_sub[i]">
+                            {{data.name}}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <div class="col-sm-2">
+              <table class="table table-bordered">
+                <thead style="text-align:center;">
+                  <tr>
+                    <th>Course</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let subj of timetbl; let i = index">
+                  <tr onclick="select_subj()">
+                    <div class="sub_panel">
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          <div dnd-draggable [dragEnabled]="true" [dragData]="[subj.name, subj.id, i]">{{subj.name}}({{subj.sessionsPerWeek}})</div>
+                        </div>
+                      </div>
+                    </div>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button type="button" awPreviousStep>Previous Step</button>
+    <button type="button" awNextStep>Review</button>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Generate">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-10">
+          <table class="table table-bordered time_table">
+            <thead style="text-align:center;">
+              <tr>
+                <th>Days</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Monday</b></td>
+                <td *ngFor="let row of monday; let i = index">
+                  <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_mon($event,i)">
+                    <div class="panel-heading" style="visibility: hidden">
+                      {{row}}
+                    </div>
+                    <div class="panel-body">
+                      <div *ngFor="let data of monday_sub[i]">
+                        {{data.name}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Tuesday</b></td>
+                <td *ngFor="let row of tuesday let i = index">
+                  <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_tue($event,i)">
+                    <div class="panel-heading" style="visibility: hidden">
+                      {{row}}
+                    </div>
+                    <div class="panel-body">
+                      <div *ngFor="let data of tuesday_sub[i]">
+                        {{data.name}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Wednesday</b></td>
+                <td *ngFor="let row of wednesday let i = index">
+                  <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_wed($event,i)">
+                    <div class="panel-heading" style="visibility: hidden">
+                      {{row}}
+                    </div>
+                    <div class="panel-body">
+                      <div *ngFor="let data of wednesday_sub[i]">
+                        {{data.name}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Thursday</b></td>
+                <td *ngFor="let row of thursday let i = index">
+                  <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_thu($event,i)">
+                    <div class="panel-heading" style="visibility: hidden">
+                      {{row}}
+                    </div>
+                    <div class="panel-body">
+                      <div *ngFor="let data of thursday_sub[i]">
+                        {{data.name}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Friday</b></td>
+                <td *ngFor="let row of friday let i = index">
+                  <div id="0_{{row}}" dnd-droppable [dropEnabled]="true" class="panel panel-info" (onDropSuccess)="dropdata_fri($event,i)">
+                    <div class="panel-heading" style="visibility: hidden">
+                      {{row}}
+                    </div>
+                    <div class="panel-body">
+                      <div *ngFor="let data of friday_sub[i]">
+                        {{data.name}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" awPreviousStep>Previous Step</button>
+  <button type="button" (click)="finishFunction()"  [awGoToStep]="{stepIndex: 0}">Finish</button>
+  </aw-wizard-step>
+</aw-wizard>"
