@@ -1,4 +1,4 @@
-
+<ng4-loading-spinner> </ng4-loading-spinner>
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
@@ -25,8 +25,7 @@
           </div>
         </div>
       </form>
-      <div class="row feetype_table">
-      
+      <div class="row feetype_table">      
             <table class="table table-responsive-sm table-bordered table-striped table-sm">
               <thead>
                 <tr>
@@ -36,16 +35,15 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let fees_type of data">
-                      <td>{{fees_type.id}}</td> 
+                  <tr *ngFor="let fees_type of data;let i=index">
+                      <td>{{i+1}}</td> 
                       <td>{{fees_type.name}}</td>
-                      <td><i class="fa fa-times-circle del_icon" aria-hidden="true"></i></td>
+                      <td><i class="fa fa-times-circle del_icon" (click)="delete_year(fees_type.id)" aria-hidden="true"></i></td>
                    </tr>                                                                                                                 
               </tbody>
-            </table>
-          
-
+            </table>          
       </div>
+    
     </div>
 
 

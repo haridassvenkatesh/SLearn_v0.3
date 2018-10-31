@@ -34,8 +34,9 @@ export class AddFeetypeComponent implements OnInit {
       if (response.length < 1) {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
+        
         this.data = response;
-        console.log(this.data);
+        
       }
       this.spinnerService.hide();
     }, error => {
@@ -50,6 +51,7 @@ export class AddFeetypeComponent implements OnInit {
     this.feesService.addFeeType(fees)
       .subscribe(response => {
         this.data = response;
+        this.router.navigate(["add-feetype"]);
         this.toastr.success('Fees Type Added Successfully!', 'Success!');
        // this.flushEvents();
         this.spinnerService.hide();

@@ -19,6 +19,8 @@ export class AddFeeyearComponent implements OnInit {
     }
 
     data: any = [];
+    interval;
+    refreshData;
     fees_year: any = {
       name: '',
       status: 'true'
@@ -52,11 +54,26 @@ export class AddFeeyearComponent implements OnInit {
       .subscribe(response => {
         this.data = response;
         this.toastr.success('Fees Year Added Successfully!', 'Success!');
-       // this.flushEvents();
+        this.interval = setInterval(() => { 
+          location.reload();
+      }, 5000)
         this.spinnerService.hide();
       }, error => {
         console.log(error);
         this.toastr.error('Fees Year Added Failed!', 'Error!');
+        this.spinnerService.hide();
+      })
+  }
+
+  delete_year(del_id){
+    this.spinnerService.show();
+    this.feesService.deleteFeeYear(del_id)
+      .subscribe(response => {
+        this.toastr.success('Fees Deleted Successfully!', 'Success!');
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('Fees Deleted Failed!', 'Error!');
         this.spinnerService.hide();
       })
   }

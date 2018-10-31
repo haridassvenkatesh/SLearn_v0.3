@@ -1,3 +1,4 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
@@ -32,8 +33,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let fees_type of data">
-              <td>{{fees_type.id}}</td>
+            <tr *ngFor="let fees_type of data;let i=index">
+              <td>{{i+1}}</td>
               <td>{{fees_type.name}}</td>
               <td><i class="fa fa-times-circle del_icon" aria-hidden="true"></i></td>
             </tr>

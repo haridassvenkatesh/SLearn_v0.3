@@ -21,7 +21,7 @@ export class AddSubgroupComponent implements OnInit {
     data: any = [];
     subgroup: any = {
       name: '',
-      subgroupType: ''
+      subgroupType: 'Batch'
     }  
   ngOnInit() {
     this.getSubGroup();
@@ -35,7 +35,6 @@ export class AddSubgroupComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.data = response;
-        console.log(this.data);
       }
       this.spinnerService.hide();
     }, error => {
@@ -44,4 +43,36 @@ export class AddSubgroupComponent implements OnInit {
       this.spinnerService.hide();
     })
   }
+
+
+  submitSubGroup(subgroup) {
+  //  console.log(subgroup); 
+    this.spinnerService.show();
+    this.feesService.addSubGroup(subgroup)
+      .subscribe(response => {
+        this.data = response;
+        this.toastr.success('SubGroup Added Successfully!', 'Success!');
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('SubGroup Year Added Failed!', 'Error!');
+        this.spinnerService.hide();
+      })
+  }
+
+  deleteSubGroup(del_id){
+    this.spinnerService.show();
+    this.feesService.deleteSubGroup(del_id)
+      .subscribe(response => {
+        this.toastr.success('SubGroup Deleted Successfully!', 'Success!');
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('SubGroup Deleted Failed!', 'Error!');
+        this.spinnerService.hide();
+      })
+
+  }
+
+
 }

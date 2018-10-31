@@ -6,30 +6,18 @@
     <div class="card-body">
       <form class="form-horizontal">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group">
               <label class="col-form-label" for="fees.name">SubGroup</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <input class="form-control"  type="text">
+                  <input class="form-control" [(ngModel)]="subgroup.name"  name="subgroup.name" type="text">
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-md-4">
-              <div class="form-group">
-                  <label class="col-form-label" for="fees.name">SubGroup Type</label>
-                  <div class="controls">
-                    <div class="input-prepend input-group">
-                      <input class="form-control"  type="text">
-                    </div>
-                  </div>
-                </div>
-          </div>
-
-          <div class="col-md-4">
-            <button class="btn btn-sm btn-primary add_btn" type="submit" >
+          <div class="col-md-6">
+            <button class="btn btn-sm btn-primary add_btn" type="submit" (click)="submitSubGroup(subgroup)" >
               <i class="fa fa-dot-circle-o"></i> Add</button>
           </div>
 
@@ -52,7 +40,7 @@
               <td>{{subgroup.name}}</td>
               <td>{{subgroup.subgroupType}}</td>
              
-              <td><i class="fa fa-times-circle del_icon" aria-hidden="true"></i></td>
+              <td><i class="fa fa-times-circle del_icon" (click)="deleteSubGroup(subgroup.id)" aria-hidden="true"></i></td>
             </tr>
           </tbody>
         </table>

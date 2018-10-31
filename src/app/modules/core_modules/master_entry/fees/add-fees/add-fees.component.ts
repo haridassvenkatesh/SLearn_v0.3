@@ -15,7 +15,6 @@ import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AddFeesComponent implements OnInit {
 
-
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
      private constantService: ConstantService,private router: Router) {
@@ -28,14 +27,14 @@ export class AddFeesComponent implements OnInit {
     feeTerm: {
       name: '',
       feeYearId: {        
-        name: '',
+        name: '-1',
         status: 'true'
       },
       effectiveDate: '',
       expiryDate: ''
     },
     feeType: {     
-      name: '',
+      name: '-1',
       status: 'true'
     },
     feeAmount: ''
@@ -78,8 +77,7 @@ export class AddFeesComponent implements OnInit {
       if (response.length < 1) {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
-        this.feeyear = response;
-        console.log(this.feeyear);
+        this.feeyear = response;        
       }
       this.spinnerService.hide();
     }, error => {
@@ -97,7 +95,6 @@ export class AddFeesComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.feetype = response;
-        console.log(this.feetype);
       }
       this.spinnerService.hide();
     }, error => {

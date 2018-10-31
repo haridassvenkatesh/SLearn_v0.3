@@ -91,7 +91,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationModule } from 'ngx-bootstrap';
 import { StudentsModule } from './modules/core_modules/people_management/students/students.module';
 import { StaffsModule } from './modules/core_modules/people_management/staffs/staffs.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { DepartmentsModule } from './modules/core_modules/master_entry/departments/departments.module';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -129,6 +129,7 @@ export function highchartModules() {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     ChartModule,
     FusionChartsModule,
