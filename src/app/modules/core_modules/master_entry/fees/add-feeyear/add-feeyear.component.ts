@@ -1,9 +1,14 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConstantService } from '../../../../../constant.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastsManager } from 'ng2-toastr';
 import { FeesService } from '../fees.service';
+
+
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-add-feeyear',
@@ -14,11 +19,12 @@ export class AddFeeyearComponent implements OnInit {
 
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router) {
+     private constantService: ConstantService,private router: Router,private chRef: ChangeDetectorRef) {
       this.toastr.setRootViewContainerRef(vcr);
     }
 
     data: any = [];
+    dataTable: any; 
     interval;
     refreshData;
     fees_year: any = {
@@ -38,7 +44,10 @@ export class AddFeeyearComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.data = response;
-        console.log(this.data);
+     //   console.log(this.data);
+        this.chRef.detectChanges();
+        const table:any=$('table');
+        this.dataTable=table.DataTable();
       }
       this.spinnerService.hide();
     }, error => {
@@ -54,9 +63,7 @@ export class AddFeeyearComponent implements OnInit {
       .subscribe(response => {
         this.data = response;
         this.toastr.success('Fees Year Added Successfully!', 'Success!');
-        this.interval = setInterval(() => { 
-          location.reload();
-      }, 5000)
+        this.getFeeYear();
         this.spinnerService.hide();
       }, error => {
         console.log(error);
@@ -70,6 +77,7 @@ export class AddFeeyearComponent implements OnInit {
     this.feesService.deleteFeeYear(del_id)
       .subscribe(response => {
         this.toastr.success('Fees Deleted Successfully!', 'Success!');
+        this.getFeeYear();
         this.spinnerService.hide();
       }, error => {
         console.log(error);

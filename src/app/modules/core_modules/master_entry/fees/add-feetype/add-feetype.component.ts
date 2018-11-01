@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConstantService } from '../../../../../constant.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastsManager } from 'ng2-toastr';
 import { FeesService } from '../fees.service';
 
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-add-feetype',
@@ -15,10 +18,11 @@ export class AddFeetypeComponent implements OnInit {
 
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
   private toastr: ToastsManager, vcr: ViewContainerRef,
-   private constantService: ConstantService,private router: Router) {
+   private constantService: ConstantService,private router: Router,private chRef: ChangeDetectorRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
   data: any = [];
+  dataTable: any;
   fees: any = {
     name: '',
     status: 'true'
@@ -33,9 +37,11 @@ export class AddFeetypeComponent implements OnInit {
     .subscribe(response => {
       if (response.length < 1) {
         this.toastr.info('Data Not Found!', 'Info!');
-      } else {
-        
+      } else {        
         this.data = response;
+        this.chRef.detectChanges();
+        const table:any=$('table');
+        this.dataTable=table.DataTable();
         
       }
       this.spinnerService.hide();
@@ -53,7 +59,7 @@ export class AddFeetypeComponent implements OnInit {
         this.data = response;
         this.router.navigate(["add-feetype"]);
         this.toastr.success('Fees Type Added Successfully!', 'Success!');
-       // this.flushEvents();
+        this.getFeeType();
         this.spinnerService.hide();
       }, error => {
         console.log(error);

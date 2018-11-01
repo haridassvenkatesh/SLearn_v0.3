@@ -1,11 +1,18 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
 <div class="animated fadeIn">
     <div class="card">
       <div class="card-header">
         <i class="fa fa-rupee"></i>Manage Fees
+        <div>
+             <a  class="point" [routerLink]="['/fees/add-fees']">
+                <button class="btn btn-sm btn-pill btn-success add_btn"  type="button">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees</button>
+              </a>
+        </div>
       </div>
       <div class="card-body">
           <div class="row edit_form">
-            <table class="table table-responsive-sm table-bordered table-striped table-sm">
+            <table class="table table-hover" cellspacing="0">
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -25,30 +32,8 @@
                   <td>21-10-2018</td>
                   <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Anbu.P</td>
-                    <td>6500</td>
-                    <td></td>
-                    <td>21-10-2018</td>
-                    <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                  </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>Bala.S</td>
-                      <td>6500</td>
-                      <td></td>
-                      <td>21-10-2018</td>
-                      <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Chandru.R</td>
-                        <td>6500</td>
-                        <td></td>
-                        <td>21-10-2018</td>
-                        <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                      </tr>                               
+                
+                                             
               </tbody>
             </table>
           </div>

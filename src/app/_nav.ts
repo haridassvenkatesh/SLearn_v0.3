@@ -85,11 +85,6 @@ export const navigation = [
     icon: 'fa fa-rupee',
     children: [
       {
-        name: 'Add Fees',
-        url: '/fees/add-fees',
-        icon: 'icon-hourglass'
-      },
-      {
         name: 'Assign Fees',
         url: '/fees/assign-fees',
         icon: 'icon-hourglass'
@@ -112,8 +107,12 @@ export const navigation = [
         name: 'Add Sub Group',
         url: '/fees/add-subgroup',
         icon: 'icon-hourglass'
-      }
-     
+      },
+      {
+        name: 'Add Fee Term',
+        url: '/fees/add-feeterm',
+        icon: 'icon-hourglass'
+      }     
     ]
   },
   {

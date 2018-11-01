@@ -88,4 +88,13 @@ export class FeesService {
       });
   }
 
+  manageFees(){
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.get(this.constantService._base_url + 'subgroup/1/feemapping', { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error)
+      });
+  }
+
 }

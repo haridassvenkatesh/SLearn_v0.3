@@ -83,54 +83,94 @@
             </tbody>
           </table>
         </div> -->
-        <form [formGroup]="user" >
+        <form [formGroup]="user">
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-md-3 form-control-label" for="name">Workflow</label>
-                  <div class="col-md-9">
-                    <input type="text" id="name" formControlName="name" name="name" class="form-control" placeholder="Workflow Name">
-                  </div>
-                </div>
+        
+            <div class="row edit_form">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>Fees</th>
+                      <th>Due Date</th>
+                      <th>Amount  &nbsp; &nbsp; <a (click)="addSteps()" class="point">
+                          <button class="btn btn-sm btn-pill btn-success" type="button">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add</button>
+                        </a></th>
+                       
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="steps">
+                    <tr *ngFor="let st of getSteps(user); let i = index" [formGroupName]="i">
+                      <!-- <td [formGroupName]="i" class="row txt_add">                          
+                              <div class="col-md-3">
+                                <input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control">
+                              
+                              </div>
+                              <div class="col-md-3">
+                                <input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control">
+                              
+                              </div>
+                              <div class="col-md-3">
+                                <input type="text" formControlName="workflowPhaseId" ng-model="stepNumber" class="form-control">
+                              </div>
+                              <div class="col-md-3">
+                                <span *ngIf="getSteps(user).length > 1" (click)="removeStep(i)" class="glyphicon glyphicon-remove">
+                                  <i class="fa fa-times" aria-hidden="true"></i>
+                                </span>                                
+                              </div>                          
+                      </td> -->
+                      <td>{{i+1}}</td>                      
+                      <td><input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control"></td>
+                      <td><input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control"></td>
+                      <td><input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control text_last" > 
+                        <span *ngIf="getSteps(user).length > 1" (click)="removeStep(i)" class="glyphicon glyphicon-remove txt_close">
+                          <i class="fa fa-times-circle" aria-hidden="true"></i>
+                        </span> </td>                  
+                    </tr>
+                    <tr>
+                      <td colspan="3"><span class="total">Total</span></td>
+                      <td></td>
+                    </tr>  
+                   
+                  </tbody>
+                </table>
               </div>
-              <div class="col-md-6">
-                <a (click)="addSteps()" class="point">
-                  <button class="btn btn-sm btn-pill btn-danger" type="button">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add</button>
-                </a>
-              </div>
-            </div>
 
 
-            <div class="row" formArrayName="steps">  
+            <!-- <div class="row" formArrayName="steps">
               <div class="col-md-12" *ngFor="let st of getSteps(user); let i = index">
-               
+
                 <div [formGroupName]="i" class="row txt_add">
-                  <div class="col-md-4">
-                    <input type="text" formControlName="stepNumber"  ng-model="stepNumber"   class="form-control" >
-                    <!-- <input type="text" formControlName="stepNumber" ng-model="stepNumber" readonly="readonly" ng-Value="i+1"  class="form-control" placeholder="{{i+1}}" > -->
+                  <div class="col-md-3">
+                    <input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control">
+                    
                   </div>
-                  <div class="col-md-4">
-                    <input type="text" formControlName="workflowPhaseId"  ng-model="stepNumber"   class="form-control" >
+                  <div class="col-md-3">
+                    <input type="text" formControlName="stepNumber" ng-model="stepNumber" class="form-control">
+                    
                   </div>
-                  <div class="col-md-4">
-                      <span *ngIf="getSteps(user).length > 1" (click)="removeStep(i)" class="glyphicon glyphicon-remove"> 
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                      </span>
-                    </div>
+                  <div class="col-md-3">
+                    <input type="text" formControlName="workflowPhaseId" ng-model="stepNumber" class="form-control">
+                  </div>
+                  <div class="col-md-3">
+                    <span *ngIf="getSteps(user).length > 1" (click)="removeStep(i)" class="glyphicon glyphicon-remove">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </span>
+                    
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>          
+            </div> -->
+          </div>
         </form>
 
         <div class="row">
-        <div class="col-sm-6" >
-           
+          <div class="col-sm-6">
+
           </div>
-        
-        <div class="col-sm-6">
+
+          <div class="col-sm-6">
             <div class="form-group">
               <label class="col-form-label" for="prependedInput">Credit</label>
               <div class="controls">
@@ -141,7 +181,7 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>
 
       </form>
 

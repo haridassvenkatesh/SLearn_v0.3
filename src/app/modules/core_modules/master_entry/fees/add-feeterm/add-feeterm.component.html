@@ -1,0 +1,67 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-rupee"></i>Fees Term
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-form-label" for="fees.name">Term Name</label>
+                <div class="controls">
+                  <div class="input-prepend input-group">
+                      <input class="form-control" [(ngModel)]="feeterm.name" name="feeterm.name" placeholder="Fee Name" type="text">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-form-label" for="appendedPrependedInput">Effective Date</label>
+                <div class="controls">
+                  <div class="input-prepend input-group">
+                     <ng-datepicker [(ngModel)]="feeterm.effectiveDate" name="feeterm.effectiveDate" class="ng_date_picker" [(options)]="options"></ng-datepicker>                      
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="col-form-label" for="prependedInput">Fee Year</label>
+                <div class="controls">
+                  <div class="input-prepend input-group">
+                    <select  [(ngModel)]="feeterm.feeYearId.id" name="feeterm.feeYearId.id" class="form-control">
+                      <option value="-1">Select Fee Year</option>
+                      <option value="{{fe_ye.id}}" *ngFor="let fe_ye of feeYear">{{fe_ye.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-form-label" for="appendedPrependedInput">Expiry Date</label>
+                <div class="controls">
+                  <div class="input-prepend input-group">
+                      <ng-datepicker  [(ngModel)]="feeterm.expiryDate" name="feeterm.expiryDate" class="ng_date_picker" [(options)]="options"></ng-datepicker>                      
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+  
+  
+  
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" type="submit" (click)="addFeeTerm(feeterm)">
+              <i class="fa fa-dot-circle-o"></i> Submit</button>
+            <button class="btn btn-sm btn-danger" type="reset">
+              <i class="fa fa-ban"></i> Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  
+  </div>

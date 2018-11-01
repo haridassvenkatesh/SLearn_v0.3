@@ -8,6 +8,7 @@ import { ManageFeesComponent } from './manage-fees/manage-fees.component';
 import { AddFeetypeComponent } from './add-feetype/add-feetype.component';
 import { AddFeeyearComponent } from './add-feeyear/add-feeyear.component';
 import { AddSubgroupComponent } from './add-subgroup/add-subgroup.component';
+import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,13 @@ const routes: Routes = [
         component: AddSubgroupComponent,
         data: {
           title: 'Add Sub Group'
+        }
+      },
+      {
+        path: 'add-feeterm',
+        component: AddFeetermComponent,
+        data: {
+          title: 'Add Fee Term'
         }
       }
      

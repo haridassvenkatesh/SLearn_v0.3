@@ -1,9 +1,14 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConstantService } from '../../../../../constant.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ToastsManager } from 'ng2-toastr';
 import { FeesService } from '../fees.service';
+
+
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-add-subgroup',
@@ -14,11 +19,12 @@ export class AddSubgroupComponent implements OnInit {
 
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router) {
+     private constantService: ConstantService,private router: Router, private chRef: ChangeDetectorRef) {
       this.toastr.setRootViewContainerRef(vcr);
     }
 
     data: any = [];
+    dataTable: any; 
     subgroup: any = {
       name: '',
       subgroupType: 'Batch'
@@ -35,6 +41,9 @@ export class AddSubgroupComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.data = response;
+        this.chRef.detectChanges();
+        const table:any=$('table');
+        this.dataTable=table.DataTable();
       }
       this.spinnerService.hide();
     }, error => {
@@ -46,12 +55,12 @@ export class AddSubgroupComponent implements OnInit {
 
 
   submitSubGroup(subgroup) {
-  //  console.log(subgroup); 
     this.spinnerService.show();
     this.feesService.addSubGroup(subgroup)
       .subscribe(response => {
         this.data = response;
         this.toastr.success('SubGroup Added Successfully!', 'Success!');
+        this.getSubGroup();
         this.spinnerService.hide();
       }, error => {
         console.log(error);
@@ -65,6 +74,7 @@ export class AddSubgroupComponent implements OnInit {
     this.feesService.deleteSubGroup(del_id)
       .subscribe(response => {
         this.toastr.success('SubGroup Deleted Successfully!', 'Success!');
+        this.getSubGroup();
         this.spinnerService.hide();
       }, error => {
         console.log(error);

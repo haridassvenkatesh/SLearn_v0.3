@@ -114,10 +114,6 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 
 
-
-
-
-
 export function highchartModules() {
   return [exporting];
 }
