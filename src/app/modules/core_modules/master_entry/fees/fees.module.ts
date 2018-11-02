@@ -17,6 +17,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
 import { HttpClientModule } from '@angular/common/http';
+import {DpDatePickerModule} from 'ng2-date-picker';
 
 
 
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    DpDatePickerModule
   ],
   declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent],
   providers: [

@@ -7,6 +7,7 @@ import { FeesService } from '../fees.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { frLocale } from 'ngx-bootstrap';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-fees',
@@ -105,8 +106,25 @@ export class AddFeesComponent implements OnInit {
   }
 
   addFees(fees){
+    this.spinnerService.show();
+    this.fees.effectiveDate = new DatePipe('en-IN').transform(this.fees.effectiveDate, 'yyyy-MM-dd');
+    this.fees.endTimestamp = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
+    this.fees.effectiveDate += 'T00:00:00.000Z';
+    this.fees.expiryDate += 'T23:59:59.000Z';
     console.log(fees);
+    // this.feesService.submitEvents(fees)
+    //   .subscribe(response => {
+    //     this.toastr.success('Event Added Successfully!', 'Success!');
+     
+    //     this.spinnerService.hide();
+    //   }, error => {
+    //     console.log(error);
+    //     this.toastr.error('Event Added Failed!', 'Error!');
+    //     this.spinnerService.hide();
+    //   })
   }
 
+
+  
   
 }
