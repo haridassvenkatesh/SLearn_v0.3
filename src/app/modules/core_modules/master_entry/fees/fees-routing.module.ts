@@ -9,6 +9,7 @@ import { AddFeetypeComponent } from './add-feetype/add-feetype.component';
 import { AddFeeyearComponent } from './add-feeyear/add-feeyear.component';
 import { AddSubgroupComponent } from './add-subgroup/add-subgroup.component';
 import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
+import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
 
 const routes: Routes = [
   {
@@ -67,10 +68,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'add-feeterm',
+        path: 'add-feeterm/:id',
         component: AddFeetermComponent,
         data: {
           title: 'Add Fee Term'
+        }
+      },
+      {
+        path: 'manage-feeterm/:id',
+        component: ManageFeetermComponent,
+        data: {
+          title: 'Manage Fee Term'
         }
       }
      

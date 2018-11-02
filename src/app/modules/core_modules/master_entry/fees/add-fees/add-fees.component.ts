@@ -112,16 +112,16 @@ export class AddFeesComponent implements OnInit {
     this.fees.effectiveDate += 'T00:00:00.000Z';
     this.fees.expiryDate += 'T23:59:59.000Z';
     console.log(fees);
-    // this.feesService.submitEvents(fees)
-    //   .subscribe(response => {
-    //     this.toastr.success('Event Added Successfully!', 'Success!');
+    this.feesService.addFees(fees)
+      // .subscribe(response => {
+      //   this.toastr.success('Fees Added Successfully!', 'Success!');
      
-    //     this.spinnerService.hide();
-    //   }, error => {
-    //     console.log(error);
-    //     this.toastr.error('Event Added Failed!', 'Error!');
-    //     this.spinnerService.hide();
-    //   })
+      //   this.spinnerService.hide();
+      // }, error => {
+      //   console.log(error);
+      //   this.toastr.error('Fees Added Failed!', 'Error!');
+      //   this.spinnerService.hide();
+      // })
   }
 
 

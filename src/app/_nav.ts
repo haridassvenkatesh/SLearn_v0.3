@@ -95,22 +95,22 @@ export const navigation = [
         icon: 'icon-hourglass'
       },
       {
-        name: 'Add Fees Type',
+        name: 'Fees Type',
         url: '/fees/add-feetype',
         icon: 'icon-hourglass'
       },
       {
-        name: 'Add Fees Year',
+        name: 'Fees Year',
         url: '/fees/add-feeyear',
         icon: 'icon-hourglass'
       },{
-        name: 'Add Sub Group',
+        name: 'Sub Group',
         url: '/fees/add-subgroup',
         icon: 'icon-hourglass'
       },
       {
-        name: 'Add Fee Term',
-        url: '/fees/add-feeterm',
+        name: 'Manage Fee Term',
+        url: '/fees/manage-feeterm',
         icon: 'icon-hourglass'
       }     
     ]

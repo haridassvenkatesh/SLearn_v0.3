@@ -10,36 +10,42 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 
 @Component({
-  selector: 'app-manage-fees',
-  templateUrl: './manage-fees.component.html',
-  styleUrls: ['./manage-fees.component.scss']
+  selector: 'app-manage-feeterm',
+  templateUrl: './manage-feeterm.component.html',
+  styleUrls: ['./manage-feeterm.component.scss']
 })
-export class ManageFeesComponent implements OnInit {
+export class ManageFeetermComponent implements OnInit {
 
+  subgroupid: any; 
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router,private chRef: ChangeDetectorRef) {
+     private constantService: ConstantService,private router: Router,private chRef: ChangeDetectorRef,
+     private  route:ActivatedRoute) {
       this.toastr.setRootViewContainerRef(vcr);
+      this.route.params.subscribe(params => {
+        if(params.id > 0){
+          this.subgroupid = params.id;
+        }
+      })
     }
 
-  data: any []; 
-  dataTable: any; 
-  clients: any[];
-
+  data: any [];
+  
+  dataTable: any;   
+ 
   ngOnInit() {
-    this.getFees();
+    this.getFeesTerm(); 
   }
 
-  getFees(){
+  getFeesTerm(){
     this.spinnerService.show();
-    this.feesService.manageFees()
+    this.feesService.manageFeesTerm(this.subgroupid)
     .subscribe(response => {
-        this.data = response;
-        console.log(this.data);
+        this.data = response;     
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();
-        this.spinnerService.hide();
+        this.spinnerService.hide();           
     }, error => {
       console.log(error);
       this.toastr.error('An Error Occured!', 'Error!');
@@ -47,4 +53,8 @@ export class ManageFeesComponent implements OnInit {
     })
   }
 
+  moveaddFeeTerm(subgroup_id){
+    console.log(subgroup_id);
+    this.router.navigate(['/fees/add-feeterm/',subgroup_id]);
+  }
 }

@@ -18,6 +18,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
 import { HttpClientModule } from '@angular/common/http';
 import {DpDatePickerModule} from 'ng2-date-picker';
+import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
 
 
 
@@ -35,7 +36,7 @@ import {DpDatePickerModule} from 'ng2-date-picker';
     HttpClientModule,
     DpDatePickerModule
   ],
-  declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent],
+  declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent],
   providers: [
   FeesService
   ]

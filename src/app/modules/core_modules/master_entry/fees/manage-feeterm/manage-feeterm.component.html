@@ -2,34 +2,32 @@
 <div class="animated fadeIn">
     <div class="card">
       <div class="card-header">
-        <i class="fa fa-rupee"></i>Manage Fees
+        <i class="fa fa-rupee"></i>Manage Fees Term
         <div>
-             <a  class="point" [routerLink]="['/fees/add-fees']">
-                <button class="btn btn-sm btn-pill btn-success add_btn"  type="button">
+             <a  class="point" >
+                <button (click)="moveaddFeeTerm(subgroupid)" class="btn btn-sm btn-pill btn-success add_btn"  type="button">
                   <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees</button>
               </a>
         </div>
       </div>
       <div class="card-body">
           <div class="row edit_form">
-            <table class="table table-hover" cellspacing="0">
+            <table class="table table-hover" cellspacing="0" style="min-width: 100%;">
               <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>Name</th>
-                  <th>Fees Amount</th>
-                  <th>Fees Status</th>
-                  <th>Due Date</th>
+                  <th>Term</th>
+                  <th>Acadamaic Year</th>
+                  <th>Expiry Date</th>                  
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let fees of data; let i = index">
+                <tr *ngFor="let feeTerm of data; let i = index">
                   <td>{{i+1}}</td>
-                  <td>{{fees.feeType.name}}</td>
-                  <td>{{fees.feeAmount}}</td>
-                  <td>{{fees.feeTerm.status}}</td>
-                  <td>{{fees.feeTerm.expiryDate}}</td>
+                  <td>{{feeTerm.name}}</td>
+                  <td>{{feeTerm.feeYearId.name}}</td>
+                  <td>{{feeTerm.expiryDate}}</td>
                   <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                 </tr>
                 

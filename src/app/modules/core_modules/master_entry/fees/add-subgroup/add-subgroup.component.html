@@ -39,9 +39,9 @@
             <tr *ngFor="let subgroup of data; let i = index">
               <td>{{i + 1}}</td>
               <td>{{subgroup.name}}</td>
-              <td>{{subgroup.subgroupType}}</td>
-             
-              <td><i class="fa fa-times-circle del_icon" (click)="deleteSubGroup(subgroup.id)" aria-hidden="true"></i></td>
+              <td>{{subgroup.subgroupType}}</td>             
+              <td><i class="fa fa-times-circle del_icon" (click)="deleteSubGroup(subgroup.id)" aria-hidden="true"></i>
+              &nbsp; &nbsp; <a (click)="movefeeTerm(subgroup.id)"><i class="fa fa fa-wrench"  aria-hidden="true"></i></a></td>
             </tr>
           </tbody>
         </table>

@@ -16,10 +16,16 @@ import { DatePipe } from '@angular/common';
 })
 export class AddFeetermComponent implements OnInit {
 
+  feeTermid:any [];
   constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router) {
+     private constantService: ConstantService,private router: Router, private  route:ActivatedRoute) {
       this.toastr.setRootViewContainerRef(vcr);
+      this.route.params.subscribe(params => {
+        if(params.id > 0){
+          this.feeTermid = params.id;
+        }
+      })
     }
 
   feeYear: any [];  
@@ -73,7 +79,35 @@ export class AddFeetermComponent implements OnInit {
   }
 
   addFeeTerm(feeterm){
+    this.spinnerService.show();
+    this.feeterm.effectiveDate = new DatePipe('en-IN').transform(this.feeterm.effectiveDate, 'yyyy-MM-dd');
+    this.feeterm.endTimestamp = new DatePipe('en-IN').transform(this.feeterm.expiryDate, 'yyyy-MM-dd');
+    this.feeterm.effectiveDate += 'T00:00:00.000Z';
+    this.feeterm.expiryDate += 'T23:59:59.000Z';
     console.log(feeterm);
+   this.feesService.addFeeTerm(feeterm)
+      .subscribe(response => {
+        this.toastr.success('Fees Term Added Successfully!', 'Success!');
+        this.flushfeeterm();
+        this.router.navigate(['/fees/manage-feeterm']);
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('Fees Term Added Failed!', 'Error!');
+        this.spinnerService.hide();
+      })
+  }
+
+  flushfeeterm(){
+    this.feeterm = {
+      name:'',
+      feeYearId:{
+        id:'-1',
+        status:'true'
+      },
+      effectiveDate:'',
+      expiryDate:''
+    }
   }
 
 }

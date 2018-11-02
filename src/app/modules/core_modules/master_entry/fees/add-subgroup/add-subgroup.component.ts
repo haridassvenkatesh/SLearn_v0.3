@@ -84,5 +84,9 @@ export class AddSubgroupComponent implements OnInit {
 
   }
 
+  movefeeTerm(subgrp_id){
+    this.router.navigate(['/fees/manage-feeterm/',subgrp_id]);
+  }
+
 
 }
