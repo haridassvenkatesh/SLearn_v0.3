@@ -11,7 +11,7 @@ import { CookieService } from '../../node_modules/angular2-cookie/services/cooki
 export class ConstantService {
 
   // public _base_url = 'http://52.15.179.93:8080/SLearn/rest/';
-  public _base_url = 'http://52.15.179.93:8080/slearn_v0.3/rest/';
+  public _base_url = 'http://52.15.210.240:8080/slearn_v0.3/rest/';
 
   constructor(private http: HttpClient, private _cookieService: CookieService) { }
 
@@ -95,7 +95,7 @@ export class ConstantService {
     }
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('http://52.15.179.93:9080/token', JSON.stringify(body), { headers: headers })
+    return this.http.post('http://52.15.210.240:9080/token', JSON.stringify(body), { headers: headers })
       .toPromise()
       .then((response) => response)
       .catch((error: any) => {
