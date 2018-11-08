@@ -19,6 +19,7 @@ import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
 import { HttpClientModule } from '@angular/common/http';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
+import { TabModule } from 'angular-tabs-component';
 
 
 
@@ -34,7 +35,8 @@ import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.componen
     Ng4LoadingSpinnerModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    TabModule
   ],
   declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent],
   providers: [

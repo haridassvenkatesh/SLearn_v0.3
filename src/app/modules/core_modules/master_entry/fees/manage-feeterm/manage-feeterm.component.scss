@@ -7,11 +7,11 @@
     border:1px solid #CCC;
 }
 
-#DataTables_Table_0_wrapper{
-    min-width: 100%!important;
-   
+.row tabs{
+    min-width: 100%;
 }
 
-.dataTables_wrapper, .dt-bootstrap4{
-    min-width: 100%!important;
+
+*[_ngcontent-c4] {
+    background-color: #FFF!important;
 }
