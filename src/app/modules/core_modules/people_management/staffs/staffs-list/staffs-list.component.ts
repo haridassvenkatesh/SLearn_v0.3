@@ -23,6 +23,7 @@ export class StaffsListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getDepartments();
   }
 
   // For Fetching the Staffs Details
@@ -32,7 +33,7 @@ export class StaffsListComponent implements OnInit {
     this.staffsService.fetchStaffDetails(id)
       .subscribe(response => {
         if (response.length < 1) {
-          this.toastr.info('No Data Found!');
+        //  this.toastr.info('No Data Found!');
         } else {
           this.data = response;
          // console.log(this.data);
@@ -72,7 +73,8 @@ export class StaffsListComponent implements OnInit {
     this.departmentService.fetchDepartmentDetails()
     .subscribe(response => {
       this.selection = response;
-      this.fetchStaffDetails(this.selection[0].id)
+      this.fetchStaffDetails(this.selection[0].id);
+      this.fetchStaffDetails(1);
     })
   }
 
