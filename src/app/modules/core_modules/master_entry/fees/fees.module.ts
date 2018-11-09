@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
 import { BatchService } from '../../master_entry/batch/batch.service';
-
+import { TabModule } from 'angular-tabs-component';
 
 
 
@@ -36,7 +36,8 @@ import { BatchService } from '../../master_entry/batch/batch.service';
     Ng4LoadingSpinnerModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    TabModule
   ],
   declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent],
   providers: [
