@@ -124,17 +124,17 @@ export const navigation = [
         name: 'Add Penalty',
         url: '/penalty/add-penalty',
         icon: 'icon-hourglass'
-      },
-      {
-        name: 'Assign Penalty',
-        url: '/penalty/assign-penalty',
-        icon: 'icon-hourglass'
-      },
-      {
-        name: 'Manage Penalty',
-        url: '/penalty/manage-penalty',
-        icon: 'icon-hourglass'
       }
+      // {
+      //   name: 'Assign Penalty',
+      //   url: '/penalty/assign-penalty',
+      //   icon: 'icon-hourglass'
+      // },
+      // {
+      //   name: 'Manage Penalty',
+      //   url: '/penalty/manage-penalty',
+      //   icon: 'icon-hourglass'
+      // }
      
     ]
   }

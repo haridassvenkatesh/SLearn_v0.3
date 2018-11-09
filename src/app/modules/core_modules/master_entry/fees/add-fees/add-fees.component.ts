@@ -8,6 +8,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
 import { frLocale } from 'ngx-bootstrap';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import { BatchService } from '../../../master_entry/batch/batch.service';
 
 @Component({
   selector: 'app-add-fees',
@@ -16,7 +17,9 @@ import { DatePipe } from '@angular/common';
 })
 export class AddFeesComponent implements OnInit {
 
-  constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
+  constructor(public feesService: FeesService,
+    private batchService: BatchService,
+    private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
      private constantService: ConstantService,private router: Router) {
       this.toastr.setRootViewContainerRef(vcr);
@@ -40,7 +43,7 @@ export class AddFeesComponent implements OnInit {
     },
     feeAmount: ''
   }
-  
+  selection: any = [];
   model;
   date: Date;
   options: DatepickerOptions = {
@@ -64,6 +67,7 @@ export class AddFeesComponent implements OnInit {
   ngOnInit() {
   this.getFeeYear();
   this.getFeeType();
+  this.getBatchs();
   //this.spinner();
   }
 
@@ -124,7 +128,15 @@ export class AddFeesComponent implements OnInit {
       // })
   }
 
+  getBatchs() {
+    this.batchService.fetchBatchDetails()
+      .subscribe(response => {
+        console.log(response);
+        this.selection = response;
+        //this.fetchStudents(this.selection[0].id);
+        //this.fetchStudents(1);
+      })
+  }
 
-  
-  
+    
 }

@@ -19,6 +19,8 @@ import { AddFeetermComponent } from './add-feeterm/add-feeterm.component';
 import { HttpClientModule } from '@angular/common/http';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
+import { BatchService } from '../../master_entry/batch/batch.service';
+
 
 
 
@@ -38,7 +40,8 @@ import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.componen
   ],
   declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent],
   providers: [
-  FeesService
+  FeesService,
+  BatchService
   ]
 })
 export class FeesModule { }
