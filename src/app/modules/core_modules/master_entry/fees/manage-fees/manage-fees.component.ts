@@ -32,7 +32,7 @@ export class ManageFeesComponent implements OnInit {
 
   getFees(){
     this.spinnerService.show();
-    this.feesService.manageFees()
+    this.feesService.manageFees(1)
     .subscribe(response => {
         this.data = response;
         console.log(this.data);

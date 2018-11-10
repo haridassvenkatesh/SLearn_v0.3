@@ -25,8 +25,14 @@
     margin: -15px 5px 8px 0px;
 }
 
-
-
 .dataTables_wrapper{
     min-width:100%!important;
-} 
+}
+
+.edit_form{
+    margin-top:30px;
+}
+
+.table th, .table td{
+    border:1px solid #CCC;
+}

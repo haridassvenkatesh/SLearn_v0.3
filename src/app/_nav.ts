@@ -94,11 +94,11 @@ export const navigation = [
         url: '/fees/add-subgroup',
         icon: 'icon-hourglass'
       },
-      {
-        name: 'Manage Fees',
-        url: '/fees/manage-fees',
-        icon: 'icon-hourglass'
-      },
+      // {
+      //   name: 'Manage Fees',
+      //   url: '/fees/manage-fees',
+      //   icon: 'icon-hourglass'
+      // },
       {
         name: 'Fees Type',
         url: '/fees/add-feetype',

@@ -4,7 +4,7 @@
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
-      <i class="fa fa-rupee"></i>Manage Fees
+      <i class="fa fa-rupee"></i>Manage Fees Term and Fees Map
 
     </div>
     <div class="card-body">
@@ -16,7 +16,7 @@
             <div>
               <a class="point">
                 <button (click)="moveaddFeeTerm(subgroupid)" class="btn btn-sm btn-pill btn-success add_btn" type="button">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees</button>
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees Term</button>
               </a>
             </div>
             <div class="table_col">
@@ -48,31 +48,38 @@
             </div>
           </tab>
           <tab tabTitle="Fee Map">
+              <div>
+                  <a class="point">
+                    <button (click)="addFeeMap(subgroupid)" class="btn btn-sm btn-pill btn-success add_btn" type="button">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Fees Map</button>
+                  </a>
+                </div>
             <div class="table_col">
               <div class="row edit_form">
-                <table class="table table-hover" cellspacing="0" style="width:975px;">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Term</th>
-                      <th>Acadamaic Year</th>
-                      <th>Expiry Date</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let feeTerm of data; let i = index">
-                      <td>{{i+1}}</td>
-                      <td>{{feeTerm.name}}</td>
-                      <td>{{feeTerm.feeYearId.name}}</td>
-                      <td>{{feeTerm.expiryDate}}</td>
-                      <td><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a></td>
-                    </tr>
-
-
-                  </tbody>
-                </table>
+                  <table class="table table-hover" cellspacing="0" style="width:975px;">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>Name</th>
+                          <th>Fees Amount</th>
+                          <th>Fees Status</th>
+                          <th>Due Date</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let fees of data; let i = index">
+                          <td>{{i+1}}</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
+                        </tr>
+                        
+                                                     
+                      </tbody>
+                    </table>
               </div>
             </div>
           </tab>
