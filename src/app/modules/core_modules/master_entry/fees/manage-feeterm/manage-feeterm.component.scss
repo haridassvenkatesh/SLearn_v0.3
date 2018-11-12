@@ -11,7 +11,28 @@
     min-width: 100%;
 }
 
+#DataTables_Table_0_wrapper{
+    margin:50px!important;
+}
 
-*[_ngcontent-c4] {
-    background-color: #FFF!important;
+.edit_form{
+    margin: 10px 14px 21px 12px;
+    padding: 15px 6px 13px 12px;
+}
+
+.table_col{
+    background-color: #FFF;
+    margin: -15px 5px 8px 0px;
+}
+
+.dataTables_wrapper{
+    min-width:100%!important;
+}
+
+.edit_form{
+    margin-top:30px;
+}
+
+.table th, .table td{
+    border:1px solid #CCC;
 }

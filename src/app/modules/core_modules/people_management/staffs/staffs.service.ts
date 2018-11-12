@@ -37,21 +37,21 @@ export class StaffsService {
 
   getUserRepo(id): Observable<any> {
     let headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken') });
-    return this.http.get('http://52.15.179.93:9080/admin/user/' + id, { headers: headers })
+    return this.http.get('http://52.15.210.240:9080/admin/user/' + id, { headers: headers })
       .catch((error: any) => {
         return this.httpStatus.errorStatus(error)
       });
   }
   createUserRepo(userdetails): Promise<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken') });
-    return this.http.post('http://52.15.179.93:9080/admin/user', JSON.stringify(userdetails), { headers: headers })
+    return this.http.post('http://52.15.210.240:9080/admin/user', JSON.stringify(userdetails), { headers: headers })
       .toPromise()
       .then((response) => response);
   }
 
   updateUserRepo(userdetails, id): Promise<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken') });
-    return this.http.post('http://52.15.179.93:9080/admin/user/' + id, JSON.stringify(userdetails), { headers: headers })
+    return this.http.post('http://52.15.210.240:9080/admin/user/' + id, JSON.stringify(userdetails), { headers: headers })
       .toPromise()
       .then((response) => response);
   }

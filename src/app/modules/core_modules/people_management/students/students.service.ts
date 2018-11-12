@@ -62,7 +62,7 @@ export class StudentsService {
   }
   getUserRepo(id): Observable<any> {
     let headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken') });
-    return this.http.get('http://52.15.179.93:9080/admin/user/' + id, { headers: headers })
+    return this.http.get('http://52.15.210.240:9080/admin/user/' + id, { headers: headers })
       .catch((error: any) => {
         return this.httpStatus.errorStatus(error)
       });

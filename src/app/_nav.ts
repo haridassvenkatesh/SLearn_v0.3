@@ -84,16 +84,21 @@ export const navigation = [
     url: '/fees',
     icon: 'fa fa-rupee',
     children: [
+      // {
+      //   name: 'Assign Fees',
+      //   url: '/fees/assign-fees',
+      //   icon: 'icon-hourglass'
+      // },
       {
-        name: 'Assign Fees',
-        url: '/fees/assign-fees',
+        name: 'Sub Group',
+        url: '/fees/add-subgroup',
         icon: 'icon-hourglass'
       },
-      {
-        name: 'Manage Fees',
-        url: '/fees/manage-fees',
-        icon: 'icon-hourglass'
-      },
+      // {
+      //   name: 'Manage Fees',
+      //   url: '/fees/manage-fees',
+      //   icon: 'icon-hourglass'
+      // },
       {
         name: 'Fees Type',
         url: '/fees/add-feetype',
@@ -103,16 +108,12 @@ export const navigation = [
         name: 'Fees Year',
         url: '/fees/add-feeyear',
         icon: 'icon-hourglass'
-      },{
-        name: 'Sub Group',
-        url: '/fees/add-subgroup',
-        icon: 'icon-hourglass'
-      },
-      {
-        name: 'Manage Fee Term',
-        url: '/fees/manage-feeterm',
-        icon: 'icon-hourglass'
-      }     
+      }
+      // {
+      //   name: 'Manage Fee Term',
+      //   url: '/fees/manage-feeterm',
+      //   icon: 'icon-hourglass'
+      // }     
     ]
   },
   {
