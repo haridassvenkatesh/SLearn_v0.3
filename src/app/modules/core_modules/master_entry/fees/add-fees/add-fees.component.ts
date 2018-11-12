@@ -6,7 +6,7 @@ import { ToastsManager } from 'ng2-toastr';
 import { FeesService } from '../fees.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { frLocale } from 'ngx-bootstrap';
-import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { BatchService } from '../../../master_entry/batch/batch.service';
 
@@ -21,23 +21,24 @@ export class AddFeesComponent implements OnInit {
     private batchService: BatchService,
     private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router) {
-      this.toastr.setRootViewContainerRef(vcr);
-    }
+    private constantService: ConstantService, private router: Router) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   feeyear: any = [];
   feetype: any = [];
-  fees: any = {  
+  fees: any = {
     feeTerm: {
       name: '',
-      feeYearId: {        
+      instituteBatchId: '-1',
+      feeYearId: {
         name: '-1',
         status: 'true'
       },
       effectiveDate: '',
       expiryDate: ''
     },
-    feeType: {     
+    feeType: {
       name: '-1',
       status: 'true'
     },
@@ -65,78 +66,83 @@ export class AddFeesComponent implements OnInit {
   };
 
   ngOnInit() {
-  this.getFeeYear();
-  this.getFeeType();
-  this.getBatchs();
-  //this.spinner();
+    this.getFeeYear();
+    this.getFeeType();
+    this.getBatchs();
+    //this.spinner();
   }
 
   // spinner(){
   //   this.spinnerService.show();
   // }
 
-  getFeeYear(){
+  getFeeYear() {
     this.spinnerService.show();
     this.feesService.fetchFeeYear()
-    .subscribe(response => {
-      if (response.length < 1) {
-        this.toastr.info('Data Not Found!', 'Info!');
-      } else {
-        this.feeyear = response;        
-      }
-      this.spinnerService.hide();
-    }, error => {
-      console.log(error);
-      this.toastr.error('An Error Occured!', 'Error!');
-      this.spinnerService.hide();
-    })
+      .subscribe(response => {
+        if (response.length < 1) {
+          this.toastr.info('Data Not Found!', 'Info!');
+        } else {
+          this.feeyear = response;
+        }
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('An Error Occured!', 'Error!');
+        this.spinnerService.hide();
+      })
   }
 
-  getFeeType(){
+  getFeeType() {
     this.spinnerService.show();
     this.feesService.fetchFees()
-    .subscribe(response => {
-      if (response.length < 1) {
-        this.toastr.info('Data Not Found!', 'Info!');
-      } else {
-        this.feetype = response;
-      }
-      this.spinnerService.hide();
-    }, error => {
-      console.log(error);
-      this.toastr.error('An Error Occured!', 'Error!');
-      this.spinnerService.hide();
-    })
+      .subscribe(response => {
+        if (response.length < 1) {
+          this.toastr.info('Data Not Found!', 'Info!');
+        } else {
+          this.feetype = response;
+        }
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('An Error Occured!', 'Error!');
+        this.spinnerService.hide();
+      })
   }
 
-  addFees(fees){
-    this.spinnerService.show();
-    this.fees.effectiveDate = new DatePipe('en-IN').transform(this.fees.effectiveDate, 'yyyy-MM-dd');
-    this.fees.endTimestamp = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
-    this.fees.effectiveDate += 'T00:00:00.000Z';
-    this.fees.expiryDate += 'T23:59:59.000Z';
+  addFees(fees) {
+       
     console.log(fees);
-    this.feesService.addFees(fees)
-      // .subscribe(response => {
-      //   this.toastr.success('Fees Added Successfully!', 'Success!');
-     
-      //   this.spinnerService.hide();
-      // }, error => {
-      //   console.log(error);
-      //   this.toastr.error('Fees Added Failed!', 'Error!');
-      //   this.spinnerService.hide();
-      // })
+    //  this.spinnerService.show();
+    //  this.fees.effectiveDate = new DatePipe('en-IN').transform(this.fees.effectiveDate, 'yyyy-MM-dd');
+    //  this.fees.endTimestamp = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
+    //  this.fees.effectiveDate += 'T00:00:00.000Z';
+    //  this.fees.expiryDate += 'T23:59:59.000Z';
+    //  console.log(fees);
+    //  this.feesService.addFees(fees)
+    //    .subscribe(response => {
+    //      this.toastr.success('Fees Added Successfully!', 'Success!');
+
+    //      this.spinnerService.hide();
+    //    }, error => {
+    //      console.log(error);
+    //      this.toastr.error('Fees Added Failed!', 'Error!');
+    //      this.spinnerService.hide();
+    //           })
   }
 
   getBatchs() {
     this.batchService.fetchBatchDetails()
-      .subscribe(response => {
-        console.log(response);
+      .subscribe(response => {        
         this.selection = response;
+        // 
+        
+        console.log(this.selection);
         //this.fetchStudents(this.selection[0].id);
         //this.fetchStudents(1);
       })
   }
+ 
+  
 
-    
 }

@@ -28,6 +28,7 @@ export class AddPenaltyComponent implements OnInit {
   penalty: any = {
     penaltyTerm: {
       name: '',
+      instituteBatchId: '-1',
       penaltyYearId: {
         name: '-1',
         status: 'true'
@@ -103,23 +104,24 @@ export class AddPenaltyComponent implements OnInit {
   }
 
   addPenalty(penalty) {
-    this.spinnerService.show();
-    this.penalty.effectiveDate = new DatePipe('en-IN').transform(this.penalty.effectiveDate, 'yyyy-MM-dd');
-    this.penalty.endTimestamp = new DatePipe('en-IN').transform(this.penalty.expiryDate, 'yyyy-MM-dd');
-    this.penalty.effectiveDate += 'T00:00:00.000Z';
-    this.penalty.expiryDate += 'T23:59:59.000Z';
     console.log(penalty);
-    this.penaltyService.addPenalty(penalty)
-    // .subscribe(response => {
-    //   this.toastr.success('Fees Added Successfully!', 'Success!');
+  //   this.spinnerService.show();
+  //   this.penalty.effectiveDate = new DatePipe('en-IN').transform(this.penalty.effectiveDate, 'yyyy-MM-dd');
+  //   this.penalty.endTimestamp = new DatePipe('en-IN').transform(this.penalty.expiryDate, 'yyyy-MM-dd');
+  //   this.penalty.effectiveDate += 'T00:00:00.000Z';
+  //   this.penalty.expiryDate += 'T23:59:59.000Z';
+  //   console.log(penalty);
+  //   this.penaltyService.addPenalty(penalty)
+  //   // .subscribe(response => {
+  //   //   this.toastr.success('Fees Added Successfully!', 'Success!');
 
-    //   this.spinnerService.hide();
-    // }, error => {
-    //   console.log(error);
-    //   this.toastr.error('Fees Added Failed!', 'Error!');
-    //   this.spinnerService.hide();
-    // })
-  }
+  //   //   this.spinnerService.hide();
+  //   // }, error => {
+  //   //   console.log(error);
+  //   //   this.toastr.error('Fees Added Failed!', 'Error!');
+  //   //   this.spinnerService.hide();
+  //   // })
+   }
 
 
   getBatchs() {

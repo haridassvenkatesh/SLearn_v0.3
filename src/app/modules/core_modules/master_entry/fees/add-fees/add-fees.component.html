@@ -37,20 +37,30 @@
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-form-label" for="appendedInput">Fee Amount</label>
+              <div class="controls">
+                <div class="input-group">
+                  <input [(ngModel)]="fees.feeAmount" name="fees.feeAmount" placeholder="Fee Amount" class="form-control"
+                    type="text">
+                </div>
+
+              </div>
+            </div>
           </div>
 
           <div class="col-md-6">
-              <div class="form-group">
-                  <label class="col-form-label" for="prependedInput">Select Batch</label>
-                  <div class="controls">
-                    <div class="input-prepend input-group">
-                      <select id="selection" name="selection" class="form-control">
-                        <option value="-1">-Select Batch-</option>
-                        <option value="{{select}}" *ngFor="let select of selection">{{select.name}}</option>
-                      </select>
-                    </div>
-                  </div>
+            <div class="form-group">
+              <label class="col-form-label" for="prependedInput">Select Batch</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select [(ngModel)]="fees.feeTerm.instituteBatchId" name="fees.instituteBatchId" id="selection" class="form-control">
+                    <option value="-1">-Select Batch-</option>
+                    <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
+                  </select>
                 </div>
+              </div>
+            </div>
             <div class="form-group">
               <label class="col-form-label" for="prependedInput">Fee Year</label>
               <div class="controls">
@@ -62,7 +72,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="form-group">
               <label class="col-form-label" for="appendedPrependedInput">Expiry Date</label>
               <div class="controls">
@@ -72,16 +82,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-                <label class="col-form-label" for="appendedInput">Fee Amount</label>
-                <div class="controls">
-                  <div class="input-group">
-                    <input [(ngModel)]="fees.feeAmount" name="fees.feeAmount" placeholder="Fee Name" class="form-control"
-                      type="text">
-                  </div>
-  
-                </div>
-              </div>
+
 
           </div>
         </div>
