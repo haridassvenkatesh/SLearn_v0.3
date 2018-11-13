@@ -147,7 +147,6 @@ export class AddFeesComponent implements OnInit {
         //this.fetchStudents(1);
       })
   }
-<<<<<<< HEAD
   getFeeTermId() {
     this.feesService.manageFeesTerm(this.subgroupid)
       .subscribe(response => {
@@ -157,9 +156,5 @@ export class AddFeesComponent implements OnInit {
   }
 
 
-=======
- 
-  
->>>>>>> a1206fb086de6637da3190899520217bac30eb84
 
 }
