@@ -143,6 +143,9 @@ export class AddFeesComponent implements OnInit {
       .subscribe(response => {
         //console.log(response);
         this.selection = response;
+        // 
+        
+        console.log(this.selection);
         //this.fetchStudents(this.selection[0].id);
         //this.fetchStudents(1);
       })
