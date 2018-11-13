@@ -50,7 +50,7 @@
           <tab tabTitle="Fee Map">
               <div>
                   <a class="point">
-                    <button (click)="addFeeMap(subgroupid)" class="btn btn-sm btn-pill btn-success add_btn" type="button">
+                    <button (click)="addFeeMap()" class="btn btn-sm btn-pill btn-success add_btn" type="button">
                       <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Fees Map</button>
                   </a>
                 </div>
@@ -61,19 +61,19 @@
                         <tr>
                           <th>S.No</th>
                           <th>Name</th>
+                          <th>Fee Type</th>
                           <th>Fees Amount</th>
-                          <th>Fees Status</th>
                           <th>Due Date</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let fees of data; let i = index">
+                        <tr *ngFor="let fees of feemap; let i = index">
                           <td>{{i+1}}</td>
                           <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td>{{fees.feeType.name}}</td>
+                          <td>{{fees.feeAmount}}</td>
+                          <td>{{fees.feeTerm.expiryDate}}</td>
                           <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                         </tr>
                         

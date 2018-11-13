@@ -29,13 +29,16 @@ export class ManageFeetermComponent implements OnInit {
       })
     }
 
-  data: any [];
+  data1: any [];
+  data: any[];
+  feemap: any [];
   
   dataTable: any;   
  
   ngOnInit() {
     this.getFeesTerm();
-    this.getFees(); 
+    this.getFees();
+    this.getFeesMap(); 
   }
 
   getFeesTerm(){
@@ -54,8 +57,26 @@ export class ManageFeetermComponent implements OnInit {
     })
   }
 
+
+  getFeesMap(){
+    this.spinnerService.show();
+    this.feesService.manageFees(this.subgroupid)
+    .subscribe(response => {
+        this.feemap = response; 
+        console.log(this.feemap);    
+        this.chRef.detectChanges();
+        const table:any=$('table');
+        this.dataTable=table.DataTable();
+        this.spinnerService.hide();           
+    }, error => {
+      console.log(error);
+      this.toastr.error('An Error Occured!', 'Error!');
+      this.spinnerService.hide();
+    })
+  }
+
   moveaddFeeTerm(subgroup_id){
-    console.log(subgroup_id);
+    //console.log(subgroup_id);
     this.router.navigate(['/fees/add-feeterm/',subgroup_id]);
   }
 
@@ -64,8 +85,8 @@ export class ManageFeetermComponent implements OnInit {
     this.spinnerService.show();
     this.feesService.manageFees(this.subgroupid)
     .subscribe(response => {
-        this.data = response;
-        console.log(this.data);
+        this.data1 = response;
+        console.log(this.data1);
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();

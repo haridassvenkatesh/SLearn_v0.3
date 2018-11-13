@@ -8,11 +8,13 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-form-label" for="fees.name">Fees Name</label>
+              <label class="col-form-label" for="prependedInput">Select Term</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <input class="form-control" [(ngModel)]="fees.feeTerm.name" id="fees.name" name="fees.feeTerm.name"
-                    placeholder="Fee Name" type="text">
+                  <select [(ngModel)]="fees.feeTerm.id" id="feesTerm" name="feesTerm" class="form-control">
+                    <option value="-1">-Select Term-</option>
+                    <option value="{{feeterm.id}}" *ngFor="let feeterm of feeTermId">{{feeterm.name}}</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -20,9 +22,9 @@
               <label class="col-form-label" for="appendedInput">Fees type</label>
               <div class="controls">
                 <div class="input-group">
-                  <select [(ngModel)]="fees.feeType.name" name="fees.name" class="form-control">
+                  <select [(ngModel)]="fees.feeType.id" name="fees.name" class="form-control">
                     <option value="-1">Select Fee Type</option>
-                    <option value="{{fe_ty.name}}" *ngFor="let fe_ty of feetype">{{fe_ty.name}}</option>
+                    <option value="{{fe_ty.id}}" *ngFor="let fe_ty of feetype">{{fe_ty.name}}</option>
                   </select>
                 </div>
 
@@ -32,7 +34,7 @@
               <label class="col-form-label" for="appendedPrependedInput">Effective Date</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <ng-datepicker [(ngModel)]="fees.feeTerm.effectiveDate" name="fees.effectiveDate" class="ng_date_picker"
+                  <ng-datepicker [(ngModel)]="fees.effectiveDate" name="fees.effectiveDate" class="ng_date_picker"
                     [(options)]="options"></ng-datepicker>
                 </div>
               </div>
@@ -55,9 +57,9 @@
                   <label class="col-form-label" for="prependedInput">Select Batch</label>
                   <div class="controls">
                     <div class="input-prepend input-group">
-                      <select id="selection" name="selection" class="form-control">
+                      <select [(ngModel)]="fees.instituteBatchId" id="selection" name="selection" class="form-control">
                         <option value="-1">-Select Batch-</option>
-                        <option value="{{select}}" *ngFor="let select of selection">{{select.name}}</option>
+                        <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -66,9 +68,9 @@
               <label class="col-form-label" for="prependedInput">Fee Year</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <select [(ngModel)]="fees.feeTerm.feeYearId.name" name="fees.name" class="form-control">
+                  <select [(ngModel)]="fees.feeYearId.id" name="fees.name" class="form-control">
                     <option value="-1">Select Fee Year</option>
-                    <option value="{{fe_ye.name}}" *ngFor="let fe_ye of feeyear">{{fe_ye.name}}</option>
+                    <option value="{{fe_ye.id}}" *ngFor="let fe_ye of feeyear">{{fe_ye.name}}</option>
                   </select>
                 </div>
               </div>
@@ -78,11 +80,13 @@
               <label class="col-form-label" for="appendedPrependedInput">Expiry Date</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <ng-datepicker [(ngModel)]="fees.feeTerm.expiryDate" name="fees.expiryDate" class="ng_date_picker"
+                  <ng-datepicker [(ngModel)]="fees.expiryDate" name="fees.expiryDate" class="ng_date_picker"
                     [(options)]="options"></ng-datepicker>
                 </div>
               </div>
             </div>
+
+            
             
 
           </div>

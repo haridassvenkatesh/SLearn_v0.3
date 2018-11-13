@@ -85,7 +85,7 @@ export class AddFeetermComponent implements OnInit {
     this.feeterm.effectiveDate += 'T00:00:00.000Z';
     this.feeterm.expiryDate += 'T23:59:59.000Z';
     console.log(feeterm);
-   this.feesService.addFeeTerm(feeterm)
+   this.feesService.addFeeTerm(feeterm, this.feeTermid)
       .subscribe(response => {
         this.toastr.success('Fees Term Added Successfully!', 'Success!');
         this.flushfeeterm();

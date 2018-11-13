@@ -29,6 +29,7 @@ export class EventsListComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.data = response;
+        console.log ('date',this.data);
       }
       this.spinnerService.hide();
     }, error => {
