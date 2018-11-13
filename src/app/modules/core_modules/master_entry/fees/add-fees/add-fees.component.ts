@@ -21,7 +21,7 @@ export class AddFeesComponent implements OnInit {
     private batchService: BatchService,
     private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-    private constantService: ConstantService, private router: Router, private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
     this.toastr.setRootViewContainerRef(vcr);
     this.route.params.subscribe(params => {
       if (params.id > 0) {
@@ -81,9 +81,6 @@ export class AddFeesComponent implements OnInit {
     //this.spinner();
   }
 
-  // spinner(){
-  //   this.spinnerService.show();
-  // }
 
   getFeeYear() {
     this.spinnerService.show();
@@ -150,6 +147,7 @@ export class AddFeesComponent implements OnInit {
         //this.fetchStudents(1);
       })
   }
+<<<<<<< HEAD
   getFeeTermId() {
     this.feesService.manageFeesTerm(this.subgroupid)
       .subscribe(response => {
@@ -159,5 +157,9 @@ export class AddFeesComponent implements OnInit {
   }
 
 
+=======
+ 
+  
+>>>>>>> a1206fb086de6637da3190899520217bac30eb84
 
 }
