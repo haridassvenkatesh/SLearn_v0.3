@@ -17,7 +17,7 @@ export class FeesService {
         return this.httpStatus.errorStatus(error)
       });
   }
-  
+
 
   addFeeType(fees) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
@@ -57,7 +57,7 @@ export class FeesService {
 
 
   /** DELETE FEE YEAR  **/
-  deleteFeeYear(del_id){
+  deleteFeeYear(del_id) {
     console.log(del_id);
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
     return this.http.delete(this.constantService._base_url + 'group/feeyear/' + del_id, { headers: headers })
@@ -78,8 +78,8 @@ export class FeesService {
       });
   }
 
-   /** ADD SUB GROUP  **/
-   deleteSubGroup(del_id) {
+  /** ADD SUB GROUP  **/
+  deleteSubGroup(del_id) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
     return this.http.delete(this.constantService._base_url + 'group/subgroup/' + del_id, { headers: headers })
       .catch((error: any) => {
@@ -88,9 +88,9 @@ export class FeesService {
       });
   }
 
-  manageFees(sub_grpid){
+  manageFees(sub_grpid) {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    return this.http.get(this.constantService._base_url + 'group/subgroup/'+ sub_grpid +'/feemapping', { headers: headers })
+    return this.http.get(this.constantService._base_url + 'group/subgroup/' + sub_grpid + '/feemapping', { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)
@@ -98,31 +98,48 @@ export class FeesService {
   }
 
 
-  addFees(fees, sub_grpid){
+  addFees(fees, sub_grpid) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    return this.http.post(this.constantService._base_url + 'group/subgroup/'+ sub_grpid +'/feemapping', JSON.stringify(fees), { headers: headers })
+    return this.http.post(this.constantService._base_url + 'group/subgroup/' + sub_grpid + '/feemapping', JSON.stringify(fees), { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)
       });
   }
 
-  addFeeTerm(feeTerm, subgroup_id){
+  addFeeTerm(feeTerm, subgroup_id) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    return this.http.post(this.constantService._base_url + 'group/subgroup/'+ subgroup_id +'/feeterm', JSON.stringify(feeTerm), { headers: headers })
+    return this.http.post(this.constantService._base_url + 'group/subgroup/' + subgroup_id + '/feeterm', JSON.stringify(feeTerm), { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)
       });
   }
-
-  manageFeesTerm(subgroup_id){
+  //list all fee terms
+  manageFeesTerm(subgroup_id) {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    return this.http.get(this.constantService._base_url + 'group/subgroup/'+ subgroup_id +'/feeterm', { headers: headers })
+    return this.http.get(this.constantService._base_url + 'group/subgroup/' + subgroup_id + '/feeterm', { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)
       });
   }
-
+  //get fee term using feetermid
+  getFeetermId(feeterm_id) {
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.get(this.constantService._base_url + 'group/subgroup/feeterm/' + feeterm_id, { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error)
+      });
+  }
+  updateFeeTerm(feeterm_id, feeTerm) {
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.put(this.constantService._base_url + 'group/subgroup/feeterm/' + feeterm_id, JSON.stringify(feeTerm), { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error)
+      });
+  }
 }
+

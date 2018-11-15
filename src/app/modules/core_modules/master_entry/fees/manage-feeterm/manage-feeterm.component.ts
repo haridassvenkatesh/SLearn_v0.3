@@ -101,5 +101,8 @@ export class ManageFeetermComponent implements OnInit {
   addFeeMap(){
     this.router.navigate(['/fees/add-fees/',this.subgroupid]);
   }
-
+  moveEditFeeTerm(feeTerm_id){
+    this.router.navigate(['/fees/add-feeterm/',feeTerm_id]);
+    console.log('feetid', feeTerm_id)
+  }
 }

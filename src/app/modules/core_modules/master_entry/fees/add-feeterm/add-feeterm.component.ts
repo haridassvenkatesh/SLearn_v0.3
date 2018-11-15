@@ -6,7 +6,7 @@ import { ToastsManager } from 'ng2-toastr';
 import { FeesService } from '../fees.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { frLocale } from 'ngx-bootstrap';
-import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -16,30 +16,39 @@ import { DatePipe } from '@angular/common';
 })
 export class AddFeetermComponent implements OnInit {
 
-  feeTermid:any [];
-  constructor(public feesService: FeesService,private spinnerService: Ng4LoadingSpinnerService,
+  feeTermid: any[]; 
+  updateDataID:any;
+  constructor(public feesService: FeesService, private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
-     private constantService: ConstantService,private router: Router, private  route:ActivatedRoute) {
-      this.toastr.setRootViewContainerRef(vcr);
-      this.route.params.subscribe(params => {
-        if(params.id > 0){
-          this.feeTermid = params.id;
-        }
-      })
-    }
+    private constantService: ConstantService, private router: Router, private route: ActivatedRoute) {
+    this.toastr.setRootViewContainerRef(vcr);
+    this.route.params.subscribe(params => {
+      if (params.id > 0) {
+        this.feeTermid = params.id;
+        this.updateDataID = params.id;
+      //  console.log('feeTearmId', this.feeTermid);
+      }
+    })
+  }
 
-  feeYear: any [];  
+  
+  feeYear: any[];
+  
+  position: any = -1;
+  updateButton: Boolean = false;
   feeterm: any = {
-    name:'',
-    feeYearId:{
-      id:'-1',
-      status:'true'
+    name: '',
+    feeYearId: {
+      id: '-1',
+      status: 'true'
     },
-    effectiveDate:'',
-    expiryDate:''
+    effectiveDate: '',
+    expiryDate: ''
   }
   ngOnInit() {
     this.getFeeYear();
+    this.getFeeTerm();
+
   }
 
   options: DatepickerOptions = {
@@ -61,31 +70,31 @@ export class AddFeetermComponent implements OnInit {
   };
 
 
-  getFeeYear(){
+  getFeeYear() {
     this.spinnerService.show();
     this.feesService.fetchFeeYear()
-    .subscribe(response => {
-      if (response.length < 1) {
-        this.toastr.info('Data Not Found!', 'Info!');
-      } else {
-        this.feeYear = response;        
-      }
-      this.spinnerService.hide();
-    }, error => {
-      console.log(error);
-      this.toastr.error('An Error Occured!', 'Error!');
-      this.spinnerService.hide();
-    })
+      .subscribe(response => {
+        if (response.length < 1) {
+          this.toastr.info('Data Not Found!', 'Info!');
+        } else {
+          this.feeYear = response;
+        }
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('An Error Occured!', 'Error!');
+        this.spinnerService.hide();
+      })
   }
 
-  addFeeTerm(feeterm){
+  addFeeTerm(feeterm) {
     this.spinnerService.show();
     this.feeterm.effectiveDate = new DatePipe('en-IN').transform(this.feeterm.effectiveDate, 'yyyy-MM-dd');
     this.feeterm.endTimestamp = new DatePipe('en-IN').transform(this.feeterm.expiryDate, 'yyyy-MM-dd');
     this.feeterm.effectiveDate += 'T00:00:00.000Z';
     this.feeterm.expiryDate += 'T23:59:59.000Z';
-    console.log(feeterm);
-   this.feesService.addFeeTerm(feeterm, this.feeTermid)
+    //console.log(feeterm);
+    this.feesService.addFeeTerm(feeterm, this.feeTermid)
       .subscribe(response => {
         this.toastr.success('Fees Term Added Successfully!', 'Success!');
         this.flushfeeterm();
@@ -98,15 +107,56 @@ export class AddFeetermComponent implements OnInit {
       })
   }
 
-  flushfeeterm(){
+  flushfeeterm() {
     this.feeterm = {
-      name:'',
-      feeYearId:{
-        id:'-1',
-        status:'true'
+      name: '',
+      feeYearId: {
+        id: '-1',
+        status: 'true'
       },
-      effectiveDate:'',
-      expiryDate:''
+      effectiveDate: '',
+      expiryDate: ''
+    }
+  }
+  
+  getFeeTerm(){
+    this.feesService.getFeetermId(this.feeTermid)
+      .subscribe(response => {
+        //console.log(response);
+        this.feeterm = response;
+        this.feeterm.name = response.name;
+        this.feeterm.feeYearId.name = response.feeYearId.name;
+        this.feeterm.effectiveDate = response.effectiveDate;
+        this.feeterm.expiryDate = response.expiryDate;
+        // 
+        
+        console.log(this.feeterm);
+        //this.fetchStudents(this.selection[0].id);
+        //this.fetchStudents(1);
+      })
+  
+  }
+  
+  updateFeeTerm(id) {
+    
+    this.spinnerService.show();
+    // console.log('fee_term_id',id);
+    if (this.position == -1) {
+      this.feesService.updateFeeTerm(id, this.feeterm)
+
+        .subscribe(response => {
+          this.toastr.success('Fee Term Updated Successfully!', 'Success!');
+          this.spinnerService.hide();
+        }, error => {
+          console.log(error);
+          this.toastr.error('Fee Term Updation Failed!', 'Error!');
+          this.spinnerService.hide();
+        })
+        this.updateButton = true;
+    }
+    else {
+      this.spinnerService.hide();
+      this.toastr.info('Error while updating :(');
     }
   }
 
