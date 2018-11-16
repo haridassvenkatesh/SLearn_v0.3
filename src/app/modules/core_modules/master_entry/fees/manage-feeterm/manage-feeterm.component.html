@@ -15,7 +15,7 @@
           <tab tabTitle="Fee Term" active="true">
             <div>
               <a class="point">
-                <button (click)="moveaddFeeTerm(subgroupid)" class="btn btn-sm btn-pill btn-success add_btn" type="button">
+                <button (click)="moveAddFeeTerm()" class="btn btn-sm btn-pill btn-success add_btn" type="button">
                   <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees Term</button>
               </a>
             </div>
@@ -50,8 +50,8 @@
           <tab tabTitle="Fee Map">
               <div>
                   <a class="point">
-                    <button (click)="addFeeMap()" class="btn btn-sm btn-pill btn-success add_btn" type="button">
-                      <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Fees Map</button>
+                    <button (click)="moveAddFeeMap()" class="btn btn-sm btn-pill btn-success add_btn" type="button">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Fees Map</button>
                   </a>
                 </div>
             <div class="table_col">
@@ -74,7 +74,7 @@
                           <td>{{fees.feeType.name}}</td>
                           <td>{{fees.feeAmount}}</td>
                           <td>{{fees.feeTerm.expiryDate}}</td>
-                          <td><a  (click)="EditFeeMap(fees.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
+                          <td><a  (click)="moveEditFeeMap(fees.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                         </tr>
                         
                                                      

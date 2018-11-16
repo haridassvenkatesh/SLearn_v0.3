@@ -95,8 +95,8 @@ export class ManageFeetermComponent implements OnInit {
       })
   }
 
-  moveaddFeeTerm(subgroup_id) {
-    this.router.navigate(['/fees/add-feeterm/', this.subgroupid,subgroup_id]);
+  moveAddFeeTerm() {
+    this.router.navigate(['/fees/add-feeterm/', this.subgroupid,this.subgroupid]);
   }
 
   moveEditFeeTerm(feeTerm_id) {
@@ -104,11 +104,11 @@ export class ManageFeetermComponent implements OnInit {
     //console.log('feetid', feeTerm_id)
   }
 
-  addFeeMap() {
-    this.router.navigate(['/fees/add-fees/', this.subgroupid]);
+  moveAddFeeMap() {
+    this.router.navigate(['/fees/add-fees/', this.subgroupid, this.subgroupid]);
   }
-  EditFeeMap(fees_id) {
-    this.router.navigate(['/fees/add-fees/', fees_id]);
+  moveEditFeeMap(fees_id) {
+    this.router.navigate(['/fees/add-fees/', this.subgroupid, fees_id]);
   }
 
 }

@@ -17,34 +17,32 @@ import { DatePipe } from '@angular/common';
 export class AddFeetermComponent implements OnInit {
 
   subgroupId: any;
-  feeTermId: any; 
-  updateDataID:any;
-  
+  feeTermId: any;
+  updateDataID: any;
+
   constructor(public feesService: FeesService, private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
     private constantService: ConstantService, private router: Router, private route: ActivatedRoute) {
     this.toastr.setRootViewContainerRef(vcr);
     this.date = new Date();
     this.route.params.subscribe(params => {
-      console.log('params',params);
       if (params.id > 0) {
         this.subgroupId = params.id;
         this.feeTermId = params.id_1;
-        if( params.id != params.id_1){
+        if (params.id != params.id_1) {
           this.getFeeTerm();
         }
         //this.updateDataID = params.id;
-        
-      //  console.log('feeTearmId', this.feeTermid);
+
+        //  console.log('feeTearmId', this.feeTermid);
       }
     })
   }
 
   date: Date;
   feeYear: any[];
-  
-  position: any = -1;
   updateButton: Boolean = false;
+ 
   feeterm: any = {
     name: '',
     feeYearId: {
@@ -55,14 +53,12 @@ export class AddFeetermComponent implements OnInit {
     expiryDate: ''
   }
 
-  
   ngOnInit() {
     this.getFeeYear();
-    
 
   }
 
-   options: DatepickerOptions = {
+  options: DatepickerOptions = {
     minYear: 2018,
     maxYear: 2050,
     displayFormat: 'DD-MM-YYYY',
@@ -73,7 +69,7 @@ export class AddFeetermComponent implements OnInit {
     locale: frLocale,
     minDate: new Date(Date.now()),
     //   minDate: new Date(Date.now()), // Minimal selectable date
-   //   maxDate: new Date(Date.now()),  // Maximal selectable date
+    //   maxDate: new Date(Date.now()),  // Maximal selectable date
     //   barTitleIfEmpty: 'Click to select a date',
     placeholder: 'Click to select a date', // HTML input placeholder attribute (default: '')
     //   addClass: 'form-control', // Optional, value to pass on to [ngClass] on the input field
@@ -130,8 +126,8 @@ export class AddFeetermComponent implements OnInit {
       expiryDate: ''
     }
   }
-  
-  getFeeTerm(){
+
+  getFeeTerm() {
     //console.log('on it freetermid', feeTermid);
     this.spinnerService.show();
     this.feesService.getFeetermId(this.feeTermId)
@@ -141,17 +137,17 @@ export class AddFeetermComponent implements OnInit {
         this.feeterm.name = response.name;
         this.feeterm.effectiveDate = response.effectiveDate;
         this.feeterm.expiryDate = response.expiryDate;
-       this.feeterm.effectiveDate = new DatePipe('en-IN').transform(response.effectiveDate, 'yyyy-MM-dd');
-       this.feeterm.expiryDate = new DatePipe('en-IN').transform(response.expiryDate, 'yyyy-MM-dd');
-       this.feeterm.effectiveDate += 'T06:39:22.692Z';
-       this.feeterm.expiryDate += 'T06:39:22.692Z';
-       //console.log(this.feeterm)
+        this.feeterm.effectiveDate = new DatePipe('en-IN').transform(response.effectiveDate, 'yyyy-MM-dd');
+        this.feeterm.expiryDate = new DatePipe('en-IN').transform(response.expiryDate, 'yyyy-MM-dd');
+        this.feeterm.effectiveDate += 'T06:39:22.692Z';
+        this.feeterm.expiryDate += 'T06:39:22.692Z';
+        //console.log(this.feeterm)
         this.updateButton = true;
-        this.spinnerService.hide();  
+        this.spinnerService.hide();
       })
-  
+
   }
-  
+
   updateFeeTerm(feeterm_id) {
     this.spinnerService.show();
     console.log(this.feeterm);
@@ -166,8 +162,8 @@ export class AddFeetermComponent implements OnInit {
         this.toastr.error('Fee Term Updation Failed!', 'Error!');
         this.spinnerService.hide();
       })
-        
-    
+
+
   }
 
 }

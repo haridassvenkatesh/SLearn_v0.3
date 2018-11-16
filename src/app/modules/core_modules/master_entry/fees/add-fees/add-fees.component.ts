@@ -24,36 +24,43 @@ export class AddFeesComponent implements OnInit {
     private route: ActivatedRoute) {
     this.toastr.setRootViewContainerRef(vcr);
     this.route.params.subscribe(params => {
+      console.log('params-fee', params);
       if (params.id > 0) {
-        this.subgroupid = params.id;
-        this.getFees(params.id);
+        this.subgroupId = params.id;
+        this.feeMapId = params.id_1;
+        if (params.id != params.id_1) {
+        this.getFees(this.feeMapId);
+        }
       }
     })
   }
-  subgroupid: any;
+  subgroupId: any;
   feeyear: any = [];
   feetype: any = [];
-  
+
   fees: any = {
     instituteBatchId: '-1',
-    feeYearId: {
-      id: '-1'
-    },
-    effectiveDate: '',
-    expiryDate: '',
-
     feeTerm: {
       id: '-1',
-     
+
+      feeYearId: {
+        id: '-1'
+      },
+
+      effectiveDate: '',
+      expiryDate: '',
     },
+
     feeType: {
       id: '-1'
     },
     feeAmount: ''
   }
+
+  updateButton: boolean = false;
+
   selection: any = [];
-  feeTermId: any = [];
-  model;
+  feeMapId: any = [];
   date: Date;
   options: DatepickerOptions = {
     minYear: 2010,
@@ -77,8 +84,6 @@ export class AddFeesComponent implements OnInit {
     this.getFeeYear();
     this.getFeeType();
     this.getBatchs();
-    this.getFeeTermId();
-    
   }
 
 
@@ -86,6 +91,7 @@ export class AddFeesComponent implements OnInit {
     this.spinnerService.show();
     this.feesService.fetchFeeYear()
       .subscribe(response => {
+       
         if (response.length < 1) {
           this.toastr.info('Data Not Found!', 'Info!');
         } else {
@@ -118,51 +124,60 @@ export class AddFeesComponent implements OnInit {
 
   addFees(fees) {
     this.spinnerService.show();
-    this.fees.effectiveDate = new DatePipe('en-IN').transform(this.fees.effectiveDate, 'yyyy-MM-dd');
-    this.fees.endTimestamp = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
-    this.fees.effectiveDate += 'T00:00:00.000Z';
-    this.fees.expiryDate += 'T23:59:59.000Z';
-    this.feesService.addFees(fees, this.subgroupid)
-    .subscribe(response => {
-      this.toastr.success('Fees Added Successfully!', 'Success!');
-
-      this.spinnerService.hide();
-    }, error => {
-      console.log(error);
-      this.toastr.error('Fees Added Failed!', 'Error!');
-      this.spinnerService.hide();
-    })
+    this.fees.feeTerm.effectiveDate = new DatePipe('en-IN').transform(this.fees.effectiveDate, 'yyyy-MM-dd');
+    this.fees.feeTerm.effectiveDate = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
+    this.fees.feeTerm.effectiveDate += 'T00:00:00.000Z';
+    this.fees.feeTerm.expiryDate += 'T23:59:59.000Z';
+    console.log('fees',fees);
+    this.feesService.addFees(fees, this.subgroupId)
+      .subscribe(response => {
+        this.toastr.success('Fees Added Successfully!', 'Success!');
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('Fees Added Failed!', 'Error!');
+        this.spinnerService.hide();
+       })
   }
 
   getBatchs() {
     this.batchService.fetchBatchDetails()
       .subscribe(response => {
-        this.selection = response;        
+        this.selection = response;
       })
   }
-  getFeeTermId() {
-    this.feesService.manageFeesTerm(this.subgroupid)
-      .subscribe(response => {
-        this.feeTermId = response;
-        //console.log(this.feeTermId);
-      })
-  }
-
-
+  
   /**  FEES UPDATE **/
-  getFees(fees_id){
+  getFees(fees_id) {
     this.feesService.getFees(fees_id)
       .subscribe(response => {
-        this.fees = response;     
-        this.fees.instituteBatchId = response.instituteBatchId; 
-        this.fees.id = response.id; 
-        this.fees.feeType.id = response.feeType.id; 
-        this.fees.feeTerm.effectiveDate = response.feeTerm.effectiveDate;
-        this.fees.feeTerm.expiryDate = response.feeTerm.expiryDate;
-        this.fees.feeTerm.id = response.feeTerm.id; 
+        console.log('get-fess', response);
+        this.fees = response; 
+        this.fees.instituteBatchId = response.instituteBatchId;
+        this.fees.feesTerm.feeYearId.id = response.feesTerm.feeYearId.id;
+        this.fees.feeType.id = response.feeType.id;
+        this.fees.feeTerm.effectiveDate = new DatePipe('en-IN').transform(response.feeTerm.effectiveDate, 'yyyy-MM-dd');
+        this.fees.feeTerm.expiryDate = new DatePipe('en-IN').transform(response.feeTerm.expiryDate, 'yyyy-MM-dd');
+        this.fees.feeterm.effectiveDate += 'T06:39:22.692Z';
+        this.fees.feeterm.expiryDate += 'T06:39:22.692Z';
+        this.fees.feeTerm.id = response.feeTerm.id;
         console.log(this.fees);
+        this.updateButton = true;
       })
   }
+
+  updateFeeMap(){
+    this.spinnerService.show();
+    this.feesService.updateFeeMap(this.feeMapId, this.fees)
+      .subscribe(response => {
+        this.toastr.success('Fees Updated Successfully!', 'Success!');
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('Fees Updattion Failed!', 'Error!');
+        this.spinnerService.hide();
+       })
+  } 
 
 
 }

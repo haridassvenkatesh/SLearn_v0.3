@@ -6,99 +6,99 @@
     <div class="card-body">
       <form class="form-horizontal">
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-form-label" for="fees.feeTerm">Select Term</label>
-                    <div class="controls">
-                      <div class="input-prepend input-group">
-                        <select [(ngModel)]="fees.feeTerm.id" id="fees.feeTerm.id" name="fees.feeTerm.id" class="form-control">
-                          <option value="-1">-Select Term-</option>
-                          <option value="{{feeterm.id}}" *ngFor="let feeterm of feeTermId">{{feeterm.name}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                      <label class="col-form-label" for="fees.feeType">Fees type</label>
-                      <div class="controls">
-                        <div class="input-group">
-                          <select [(ngModel)]="fees.feeType.id" name="fees.feeType.id" class="form-control">
-                            <option value="-1">Select Fee Type</option>
-                            <option value="{{fe_ty.id}}" *ngFor="let fe_ty of feetype">{{fe_ty.name}}</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-form-label" for="fees.effectiveDate">Effective Date</label>
-                        <div class="controls">
-                          <div class="input-prepend input-group">
-                            <ng-datepicker [(ngModel)]="fees.effectiveDate" name="fees.effectiveDate" class="ng_date_picker"
-                              [(options)]="options"></ng-datepicker>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                          <label class="col-form-label" for="fees.feeAmount">Fee Amount</label>
-                          <div class="controls">
-                            <div class="input-group">
-                              <input [(ngModel)]="fees.feeAmount" name="fees.feeAmount" placeholder="Fee Amount" class="form-control"
-                                type="text">
-                            </div>
-                          </div>
-                      </div>
-
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeTerm.id">Select Term</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select [(ngModel)]="fees.feeTerm.id" name="fees.feeTerm.id" class="form-control">
+                    <option value="-1">-Select Term-</option>
+                    <option value="{{feeterm.id}}" *ngFor="let feeterm of feeTermId">{{feeterm.name}}</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-form-label" for="fees.instituteBatchId">Select Batch</label>
-                    <div class="controls">
-                      <div class="input-prepend input-group">
-                        <select [(ngModel)]="fees.instituteBatchId" id="fees.instituteBatchId" name="fees.instituteBatchId" class="form-control">
-                          <option value="-1">-Select Batch-</option>
-                          <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="form-group">
-                      <label class="col-form-label" for="fees.feeYearId">Fee Year</label>
-                      <div class="controls">
-                        <div class="input-prepend input-group">
-                          <select [(ngModel)]="fees.feeYearId.id" name="fees.feeYearId.id" class="form-control">
-                            <option value="-1">Select Fee Year</option>
-                            <option value="{{fe_ye.id}}" *ngFor="let fe_ye of feeyear">{{fe_ye.name}}</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-form-label" for="fees.expiryDate">Expiry Date</label>
-                        <div class="controls">
-                          <div class="input-prepend input-group">
-                            <ng-datepicker [(ngModel)]="fees.expiryDate" name="fees.expiryDate" class="ng_date_picker" [(options)]="options"></ng-datepicker>
-                          </div>
-                        </div>
-                      </div>
-
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeType.id">Fees type</label>
+              <div class="controls">
+                <div class="input-group">
+                  <select [(ngModel)]="fees.feeType.id" name="fees.feeType.id" class="form-control">
+                    <option value="-1">Select Fee Type</option>
+                    <option value="{{fe_ty.id}}" *ngFor="let fe_ty of feetype">{{fe_ty.name}}</option>
+                  </select>
+                </div>
+              </div>
             </div>
+
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeTerm.effectiveDate">Effective Date</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <ng-datepicker [(ngModel)]="fees.feeTerm.effectiveDate" name="fees.feeTerm.effectiveDate" class="ng_date_picker"
+                    [(options)]="options"></ng-datepicker>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeAmount">Fee Amount</label>
+              <div class="controls">
+                <div class="input-group">
+                  <input [(ngModel)]="fees.feeAmount" name="fees.feeAmount" placeholder="Fee Amount" class="form-control"
+                    type="text">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="fees.instituteBatchId">Select Batch</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select [(ngModel)]="fees.instituteBatchId" id="fees.instituteBatchId" name="fees.instituteBatchId"
+                    class="form-control">
+                    <option value="-1">-Select Batch-</option>
+                    <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeTerm.feeYearId.id">Fee Year</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select [(ngModel)]="fees.feeTerm.feeYearId.id" name="fees.feeTerm.feeYearId.id" class="form-control">
+                    <option value="-1">Select Fee Year</option>
+                    <option value="{{fe_ye.id}}" *ngFor="let fe_ye of feeyear">{{fe_ye.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label" for="fees.feeTerm.expiryDate">Expiry Date</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <ng-datepicker [(ngModel)]="fees.feeTerm.expiryDate" name="fees.feeTerm.expiryDate" class="ng_date_picker"
+                    [(options)]="options"></ng-datepicker>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>  
-        
-    <div class="card-footer">
-      <button class="btn btn-sm btn-primary" type="submit" (click)="addFees(fees)">
-        <i class="fa fa-dot-circle-o"></i> Submit</button>
-      <button class="btn btn-sm btn-danger" type="reset">
-        <i class="fa fa-ban"></i> Reset</button>
+      </form>
+
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary" type="submit" (click)="addFees(fees)">
+          <i class="fa fa-dot-circle-o"></i> Submit</button>
+        <button class="btn btn-sm btn-danger" type="reset">
+          <i class="fa fa-ban"></i> Reset</button>
+      </div>
+
     </div>
-    
   </div>
 </div>
-</div>
-

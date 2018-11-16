@@ -8,7 +8,7 @@ import { HttpStatusService } from '../../../../http-status.service';
 export class FeesService {
 
   constructor(private httpStatus: HttpStatusService, private http: HttpClient, private constantService: ConstantService) { }
-//List FeeType for Group.
+  //List FeeType for Group.
   fetchFees() {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
     return this.http.get(this.constantService._base_url + 'group/1/feetype', { headers: headers })
@@ -110,7 +110,7 @@ export class FeesService {
 
   getFees(fees_id) {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    return this.http.get(this.constantService._base_url + 'group/subgroup/feemapping/'+ fees_id , { headers: headers })
+    return this.http.get(this.constantService._base_url + 'group/subgroup/feemapping/' + fees_id, { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)
@@ -144,9 +144,17 @@ export class FeesService {
       });
   }
 
-  updateFeeTerm(feeTerm,feeterm_id) {
+  updateFeeTerm(feeTerm, feeterm_id) {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
     return this.http.put(this.constantService._base_url + 'group/subgroup/feeterm/' + feeterm_id, JSON.stringify(feeTerm), { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error)
+      });
+  }
+  updateFeeMap(feemap_id, feeMap) {
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.put(this.constantService._base_url + 'group/subgroup/feemapping/' + feemap_id, JSON.stringify(feeMap), { headers: headers })
       .catch((error: any) => {
         console.log(error);
         return this.httpStatus.errorStatus(error)

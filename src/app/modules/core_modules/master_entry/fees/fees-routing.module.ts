@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'add-fees/:id',
+        path: 'add-fees/:id/:id_1',
         component: AddFeesComponent,
         data: {
           title: 'Add Fees'
