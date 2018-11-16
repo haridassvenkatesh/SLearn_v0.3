@@ -25,7 +25,7 @@
                   <thead>
                     <tr>
                       <th>S.No</th>
-                      <th>Term</th>
+                      <th>Term</th>                      
                       <th>Acadamaic Year</th>
                       <th>Expiry Date</th>
                       <th>Action</th>
@@ -33,7 +33,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let feeTerm of data; let i = index">
-                      <td>{{i+1}}</td>
+                      <td>{{i+1}}</td>                      
                       <td>{{feeTerm.name}}</td>
                       <td>{{feeTerm.feeYearId.name}}</td>
                       <td>{{feeTerm.expiryDate}}</td>
@@ -60,7 +60,7 @@
                       <thead>
                         <tr>
                           <th>S.No</th>
-                          <th>Name</th>
+                          <th>Term Name</th>
                           <th>Fee Type</th>
                           <th>Fees Amount</th>
                           <th>Due Date</th>
@@ -70,11 +70,11 @@
                       <tbody>
                         <tr *ngFor="let fees of feemap; let i = index">
                           <td>{{i+1}}</td>
-                          <td></td>
+                          <td>{{fees.feeTerm.name}}</td>
                           <td>{{fees.feeType.name}}</td>
                           <td>{{fees.feeAmount}}</td>
                           <td>{{fees.feeTerm.expiryDate}}</td>
-                          <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
+                          <td><a  (click)="EditFeeMap(fees.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                         </tr>
                         
                                                      

@@ -45,7 +45,8 @@ export class ManageFeetermComponent implements OnInit {
     this.spinnerService.show();
     this.feesService.manageFeesTerm(this.subgroupid)
     .subscribe(response => {
-        this.data = response;     
+        this.data = response;
+     //   console.log(this.data);     
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();
@@ -63,7 +64,7 @@ export class ManageFeetermComponent implements OnInit {
     this.feesService.manageFees(this.subgroupid)
     .subscribe(response => {
         this.feemap = response; 
-        console.log(this.feemap);    
+      //  console.log(this.feemap);    
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();
@@ -76,8 +77,11 @@ export class ManageFeetermComponent implements OnInit {
   }
 
   moveaddFeeTerm(subgroup_id){
-    //console.log(subgroup_id);
     this.router.navigate(['/fees/add-feeterm/',subgroup_id]);
+  }
+
+  EditFeeMap(fees_id){
+    this.router.navigate(['/fees/add-fees/',fees_id]);
   }
 
 
@@ -86,7 +90,7 @@ export class ManageFeetermComponent implements OnInit {
     this.feesService.manageFees(this.subgroupid)
     .subscribe(response => {
         this.data1 = response;
-        console.log(this.data1);
+      //  console.log(this.data1);
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();
@@ -103,6 +107,6 @@ export class ManageFeetermComponent implements OnInit {
   }
   moveEditFeeTerm(feeTerm_id){
     this.router.navigate(['/fees/add-feeterm/',feeTerm_id]);
-    console.log('feetid', feeTerm_id)
+    //console.log('feetid', feeTerm_id)
   }
 }

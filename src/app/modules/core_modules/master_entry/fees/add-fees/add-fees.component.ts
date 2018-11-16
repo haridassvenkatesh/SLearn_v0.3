@@ -26,15 +26,15 @@ export class AddFeesComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params.id > 0) {
         this.subgroupid = params.id;
-        //console.log(this.subgroupid);
+        this.getFees(params.id);
       }
     })
   }
   subgroupid: any;
   feeyear: any = [];
   feetype: any = [];
+  
   fees: any = {
-
     instituteBatchId: '-1',
     feeYearId: {
       id: '-1'
@@ -78,7 +78,7 @@ export class AddFeesComponent implements OnInit {
     this.getFeeType();
     this.getBatchs();
     this.getFeeTermId();
-    //this.spinner();
+    
   }
 
 
@@ -122,7 +122,6 @@ export class AddFeesComponent implements OnInit {
     this.fees.endTimestamp = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
     this.fees.effectiveDate += 'T00:00:00.000Z';
     this.fees.expiryDate += 'T23:59:59.000Z';
-    console.log(fees);
     this.feesService.addFees(fees, this.subgroupid)
     .subscribe(response => {
       this.toastr.success('Fees Added Successfully!', 'Success!');
@@ -138,13 +137,7 @@ export class AddFeesComponent implements OnInit {
   getBatchs() {
     this.batchService.fetchBatchDetails()
       .subscribe(response => {
-        //console.log(response);
-        this.selection = response;
-        // 
-        
-        console.log(this.selection);
-        //this.fetchStudents(this.selection[0].id);
-        //this.fetchStudents(1);
+        this.selection = response;        
       })
   }
   getFeeTermId() {
@@ -155,6 +148,21 @@ export class AddFeesComponent implements OnInit {
       })
   }
 
+
+  /**  FEES UPDATE **/
+  getFees(fees_id){
+    this.feesService.getFees(fees_id)
+      .subscribe(response => {
+        this.fees = response;     
+        this.fees.instituteBatchId = response.instituteBatchId; 
+        this.fees.id = response.id; 
+        this.fees.feeType.id = response.feeType.id; 
+        this.fees.feeTerm.effectiveDate = response.feeTerm.effectiveDate;
+        this.fees.feeTerm.expiryDate = response.feeTerm.expiryDate;
+        this.fees.feeTerm.id = response.feeTerm.id; 
+        console.log(this.fees);
+      })
+  }
 
 
 }

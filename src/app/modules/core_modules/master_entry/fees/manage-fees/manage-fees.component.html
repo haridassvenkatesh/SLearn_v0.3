@@ -16,7 +16,7 @@
               <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>Name</th>
+                  <th>Term Name</th>
                   <th>Fees Amount</th>
                   <th>Fees Status</th>
                   <th>Due Date</th>
@@ -26,11 +26,11 @@
               <tbody>
                 <tr *ngFor="let fees of data; let i = index">
                   <td>{{i+1}}</td>
-                  <td>{{fees.feeType.name}}</td>
+                  <td>{{fees.feeTerm.name}}</td>
                   <td>{{fees.feeAmount}}</td>
                   <td>{{fees.feeTerm.status}}</td>
                   <td>{{fees.feeTerm.expiryDate}}</td>
-                  <td><a  [routerLink]="['/fees/edit-fees']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
+                  <td><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
                 </tr>
                 
                                              

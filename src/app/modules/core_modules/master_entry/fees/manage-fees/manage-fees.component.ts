@@ -47,4 +47,9 @@ export class ManageFeesComponent implements OnInit {
     })
   }
 
+  moveEditFeeMap(fees_id){
+    this.router.navigate(['/fees/add-feeterm/',fees_id]);
+  }
+
+
 }
