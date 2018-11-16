@@ -16,7 +16,8 @@ import { DatePipe } from '@angular/common';
 })
 export class AddFeetermComponent implements OnInit {
 
-  feeTermid: any[]; 
+  subgroupId: any;
+  feeTermId: any; 
   updateDataID:any;
   
   constructor(public feesService: FeesService, private spinnerService: Ng4LoadingSpinnerService,
@@ -25,10 +26,15 @@ export class AddFeetermComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr);
     this.date = new Date();
     this.route.params.subscribe(params => {
+      console.log('params',params);
       if (params.id > 0) {
-        this.feeTermid = params.id;
-        this.updateDataID = params.id;
-        this.getFeeTerm(params.id);
+        this.subgroupId = params.id;
+        this.feeTermId = params.id_1;
+        if( params.id != params.id_1){
+          this.getFeeTerm();
+        }
+        //this.updateDataID = params.id;
+        
       //  console.log('feeTearmId', this.feeTermid);
       }
     })
@@ -52,6 +58,7 @@ export class AddFeetermComponent implements OnInit {
   
   ngOnInit() {
     this.getFeeYear();
+    
 
   }
 
@@ -99,7 +106,7 @@ export class AddFeetermComponent implements OnInit {
     this.feeterm.expiryDate = new DatePipe('en-IN').transform(this.feeterm.expiryDate, 'yyyy-MM-dd');
     this.feeterm.effectiveDate += 'T06:39:22.692Z';
     this.feeterm.expiryDate += 'T06:39:22.692Z';
-    this.feesService.addFeeTerm(feeterm, this.feeTermid)
+    this.feesService.addFeeTerm(feeterm, this.feeTermId)
       .subscribe(response => {
         this.toastr.success('Fees Term Added Successfully!', 'Success!');
         this.flushfeeterm();
@@ -124,10 +131,10 @@ export class AddFeetermComponent implements OnInit {
     }
   }
   
-  getFeeTerm(feeTermid){
+  getFeeTerm(){
     //console.log('on it freetermid', feeTermid);
     this.spinnerService.show();
-    this.feesService.getFeetermId(feeTermid)
+    this.feesService.getFeetermId(this.feeTermId)
       .subscribe(response => {
         this.feeterm = response;
         this.feeterm.id = response.id;
@@ -138,7 +145,7 @@ export class AddFeetermComponent implements OnInit {
        this.feeterm.expiryDate = new DatePipe('en-IN').transform(response.expiryDate, 'yyyy-MM-dd');
        this.feeterm.effectiveDate += 'T06:39:22.692Z';
        this.feeterm.expiryDate += 'T06:39:22.692Z';
-       console.log(this.feeterm)
+       //console.log(this.feeterm)
         this.updateButton = true;
         this.spinnerService.hide();  
       })

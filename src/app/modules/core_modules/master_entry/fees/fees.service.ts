@@ -8,7 +8,7 @@ import { HttpStatusService } from '../../../../http-status.service';
 export class FeesService {
 
   constructor(private httpStatus: HttpStatusService, private http: HttpClient, private constantService: ConstantService) { }
-
+//List FeeType for Group.
   fetchFees() {
     const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
     return this.http.get(this.constantService._base_url + 'group/1/feetype', { headers: headers })

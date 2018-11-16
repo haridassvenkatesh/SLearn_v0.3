@@ -68,7 +68,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'add-feeterm/:id',
+        path: 'add-feeterm/:id/:id_1',
         component: AddFeetermComponent,
         data: {
           title: 'Add Fee Term'
