@@ -11,7 +11,7 @@
               <label class="col-form-label" for="fees.feeTerm.id">Select Term</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <select [(ngModel)]="fees.feeTerm.id" name="fees.feeTerm.id" class="form-control">
+                  <select [(ngModel)]="fees.feeTerm.name" name="fees.feeTerm.name" class="form-control">
                     <option value="-1">-Select Term-</option>
                     <option value="{{feeterm.id}}" *ngFor="let feeterm of feeTermId">{{feeterm.name}}</option>
                   </select>

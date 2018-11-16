@@ -40,9 +40,10 @@ export class AddFeesComponent implements OnInit {
 
   fees: any = {
     instituteBatchId: '-1',
+ 
     feeTerm: {
       id: '-1',
-
+      name: '',
       feeYearId: {
         id: '-1'
       },
@@ -161,6 +162,7 @@ export class AddFeesComponent implements OnInit {
         this.fees.feeterm.effectiveDate += 'T06:39:22.692Z';
         this.fees.feeterm.expiryDate += 'T06:39:22.692Z';
         this.fees.feeTerm.id = response.feeTerm.id;
+        this.fees.feeTerm.name = response.feeTerm.name;
         console.log(this.fees);
         this.updateButton = true;
       })
