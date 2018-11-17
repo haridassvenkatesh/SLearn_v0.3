@@ -9,6 +9,8 @@ import { frLocale } from 'ngx-bootstrap';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { BatchService } from '../../../master_entry/batch/batch.service';
+import { StudentsService } from '../../../people_management/students/students.service';
+
 
 @Component({
   selector: 'app-add-penalty',
@@ -25,25 +27,64 @@ export class AddPenaltyComponent implements OnInit {
   }
   penaltyyear: any = [];
   penaltytype: any = [];
-  penalty: any = {
-    penaltyTerm: {
+  // penalty: any = {
+  //   penaltyTerm: {
+  //     name: '',
+  //     instituteBatchId: '-1',
+  //     penaltyYearId: {
+  //       name: '-1',
+  //       status: 'true'
+  //     },
+  //     effectiveDate: '',
+  //     expiryDate: ''
+  //   },
+  //   penaltyType: {
+  //     name: '-1',
+  //     status: 'true'
+  //   },
+  //   description: '',
+  //   feeAmount: '',
+  //   feePaid: '',
+  //   feeCredit: ''
+  // }
+
+  penalty: any ={
+    id: '',
+  repoId: '',
+  feeTypeId: {
+    id: '',
+    name: '',
+    status: true
+  },
+  feeMappingId: {
+    id: '',
+    instituteBatchId: '',
+    feeTerm: {
+      id: '',
       name: '',
-      instituteBatchId: '-1',
-      penaltyYearId: {
-        name: '-1',
-        status: 'true'
+      feeYearId: {
+        id: '',
+        name: '',
+        status: true
       },
       effectiveDate: '',
       expiryDate: ''
     },
-    penaltyType: {
-      name: '-1',
-      status: 'true'
+    feeType: {
+      id: '',
+      name: '',
+      status: false
     },
-    penaltyAmount: ''
+    feeAmount: ''
+  },
+  description:'',
+  feeAmount:'',
+  feePaid:'',
+  feeCredit:''
   }
 
   selection: any = [];
+  students:any = [];
 
   model;
   date: Date;
@@ -127,11 +168,32 @@ export class AddPenaltyComponent implements OnInit {
   getBatchs() {
     this.batchService.fetchBatchDetails()
       .subscribe(response => {
-        console.log(response);
         this.selection = response;
-        //this.fetchStudents(this.selection[0].id);
-        //this.fetchStudents(1);
+        
       })
+  }
+
+
+  /**  STUDENTS LIST **/
+  fetchStudents(id) {
+    this.spinnerService.show();
+    this.penaltyService.fetchStudentsDetail(id)
+      .subscribe(response => {
+        if (response.length < 1) {
+          this.toastr.info('No Data Found!');
+        } else {
+          this.students = response;
+          console.log(this.students);
+        }
+        this.spinnerService.hide();
+      }, error => {
+        this.toastr.error('Error Occurred!', 'Error!');
+        this.spinnerService.hide();
+      })
+  }
+
+  select_student(id){
+   this.fetchStudents(id);
   }
 
 }

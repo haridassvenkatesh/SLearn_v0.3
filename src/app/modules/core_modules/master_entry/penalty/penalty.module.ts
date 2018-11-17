@@ -32,7 +32,8 @@ import { BatchService } from '../../master_entry/batch/batch.service';
   declarations: [AddPenaltyComponent, AssignPenaltyComponent, ManagePenaltyComponent, EditPenaltyComponent],
   providers: [
     PenaltyService,
-    BatchService
+    BatchService,
+    
     ]
 })
 export class PenaltyModule { }
