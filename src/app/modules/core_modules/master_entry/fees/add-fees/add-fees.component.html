@@ -1,7 +1,10 @@
 <div class="animated fadeIn">
   <div class="card">
-    <div class="card-header">
-      <i class="fa fa-rupee"></i>Fees
+    <div class="card-header" *ngIf="!updateButton">
+      <strong><i class="fa fa-rupee"></i> Add Fees</strong>
+    </div>
+    <div class="card-header" *ngIf="updateButton">
+      <strong><i class="fa fa-rupee"></i> Update Fees</strong>
     </div>
     <div class="card-body">
       <form class="form-horizontal">
@@ -11,9 +14,9 @@
               <label class="col-form-label" for="fees.feeTerm.id">Select Term</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <select [(ngModel)]="fees.feeTerm.name" name="fees.feeTerm.name" class="form-control">
+                  <select [(ngModel)]="fees.feeTerm.id" name="fees.feeTerm.id" class="form-control">
                     <option value="-1">-Select Term-</option>
-                    <option value="{{feeterm.id}}" *ngFor="let feeterm of feeTermId">{{feeterm.name}}</option>
+                    <option value="{{feeterm.id}}" *ngFor="let feeterm of feeterm">{{feeterm.name}}</option>
                   </select>
                 </div>
               </div>
@@ -46,7 +49,7 @@
               <div class="controls">
                 <div class="input-group">
                   <input [(ngModel)]="fees.feeAmount" name="fees.feeAmount" placeholder="Fee Amount" class="form-control"
-                    type="text">
+                    type="number">
                 </div>
               </div>
             </div>
@@ -90,15 +93,23 @@
             </div>
           </div>
         </div>
+        <div class="card-footer" *ngIf="!updateButton">
+          <button class="btn btn-sm btn-primary" type="submit" (click)="addFees(fees)">
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+          <button class="btn btn-sm btn-danger" type="reset">
+            <i class="fa fa-ban"></i> Reset
+          </button>
+        </div>
+        <div class="card-footer" *ngIf="updateButton">
+          <button class="btn btn-sm btn-primary" type="submit" (click)="updateFeeMap(fees)">
+            <i class="fa fa-dot-circle-o"></i> Update
+          </button>
+          <button class="btn btn-sm btn-danger" type="reset">
+            <i class="fa fa-ban"></i> Cancel
+          </button>
+        </div>
       </form>
-
-      <div class="card-footer">
-        <button class="btn btn-sm btn-primary" type="submit" (click)="addFees(fees)">
-          <i class="fa fa-dot-circle-o"></i> Submit</button>
-        <button class="btn btn-sm btn-danger" type="reset">
-          <i class="fa fa-ban"></i> Reset</button>
-      </div>
-
     </div>
   </div>
 </div>

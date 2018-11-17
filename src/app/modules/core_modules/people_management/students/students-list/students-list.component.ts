@@ -69,7 +69,7 @@ export class StudentsListComponent implements OnInit {
     this.batchService.fetchBatchDetails()
     .subscribe(response => {
       console.log(response);
-      this.selection = response;
+      //this.selection = response;
       //this.fetchStudents(this.selection[0].id);
       this.fetchStudents(1);
     })

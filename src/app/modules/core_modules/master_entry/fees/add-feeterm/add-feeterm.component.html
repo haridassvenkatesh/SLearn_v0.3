@@ -1,13 +1,11 @@
 <div class="animated fadeIn">
   <div class="card">
-    <div class="card-header" *ngIf="!updateButton" >
+    <div class="card-header" *ngIf="!updateButton">
       <strong><i class="fa fa-rupee"></i> Add Fees Term</strong>
     </div>
-
-    <div class="card-header" *ngIf="updateButton" >
+    <div class="card-header" *ngIf="updateButton">
       <strong><i class="fa fa-rupee"></i> Update Fees Term</strong>
     </div>
-
     <div class="card-body">
       <form class="form-horizontal">
         <div class="row">
@@ -45,7 +43,6 @@
                 </div>
               </div>
             </div>
-
             <div class="form-group">
               <label class="col-form-label" for="feeterm.expiryDate">Expiry Date</label>
               <div class="controls">
@@ -55,11 +52,8 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
-
 
         <div class="card-footer" *ngIf="!updateButton">
           <button class="btn btn-sm btn-primary" type="submit" (click)="addFeeTerm(feeterm)">
@@ -81,6 +75,4 @@
       </form>
     </div>
   </div>
-
-
 </div>

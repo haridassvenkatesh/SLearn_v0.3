@@ -1,62 +1,86 @@
 <div class="animated fadeIn">
-    <div class="card">
-      <div class="card-header">
-        <i class="fa fa-rupee"></i>Manage Fees
-      </div>
-      <div class="card-body">
-          <div class="row edit_form">
-            <table class="table table-responsive-sm table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Name</th>
-                  <th>Penalty Amount</th>
-                  <th>Penalty Status</th>
-                  <th>Due Date</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Arun.R</td>
-                  <td>100</td>
-                  <td></td>
-                  <td>21-10-2018</td>
-                  <td><a  [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Anbu.P</td>
-                    <td>240</td>
-                    <td></td>
-                    <td>21-10-2018</td>
-                    <td><a  [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                  </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>Bala.S</td>
-                      <td>120</td>
-                      <td></td>
-                      <td>21-10-2018</td>
-                      <td><a  [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Chandru.R</td>
-                        <td>300</td>
-                        <td></td>
-                        <td>21-10-2018</td>
-                        <td><a  [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  </a></td>
-                      </tr>                               
-              </tbody>
-            </table>
-          </div>
-  
-          
-
-      </div>
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-rupee"></i>Manage Fees
     </div>
-  
-  
+    <div class="card-body">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="batch.id"></label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select (change)="selectedBatch($event.target.value)" class="form-control">
+                    <option value="-1">-Select Batch-</option>
+                    <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="batch.id"></label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select (change)="selectedRepoId($event.target.value)" class="form-control">
+                    <option value="-1">-Select Student-</option>
+                    <option value="{{_student.repoId}}" *ngFor="let _student of selection_student">{{_student.repoId}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row edit_form">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Penalty Name</th>
+              <th>Penalty Amount</th>
+              <th>Penalty Term</th>
+              <th>Penalty Paid</th>
+              <th>Due Date</th>
+              <th>Credit Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tbody>
+            <tr *ngFor="let pen of penalty; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{pen.feeMappingId.feeType.name}}</td>
+              <td>{{pen.feeAmount}}</td>
+              <td>{{pen.feeMappingId.feeTerm.name}}</td>
+              <td>{{pen.feePaid}}</td>
+              <td>{{pen.feeMappingId.feeTerm.expiryDate}}</td>
+              <td>{{pen.feeCredit}}</td>
+              <td>
+                <a [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <!-- <tbody>
+                <tr *ngFor="let fees of feemap; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{fees.feeTerm.name}}</td>
+                  <td>{{fees.feeType.name}}</td>
+                  <td>{{fees.feeAmount}}</td>
+                  <td>{{fees.feeTerm.expiryDate}}</td>
+                  <td><a [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></td>
+                </tr>                                                            
+              </tbody> -->
+        </table>
+      </div>
+
+
+
+    </div>
   </div>
+
+
+</div>

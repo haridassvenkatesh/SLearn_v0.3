@@ -24,12 +24,11 @@ export class AddFeesComponent implements OnInit {
     private route: ActivatedRoute) {
     this.toastr.setRootViewContainerRef(vcr);
     this.route.params.subscribe(params => {
-      console.log('params-fee', params);
       if (params.id > 0) {
         this.subgroupId = params.id;
         this.feeMapId = params.id_1;
         if (params.id != params.id_1) {
-        this.getFees(this.feeMapId);
+          this.getFees(this.feeMapId);
         }
       }
     })
@@ -37,28 +36,26 @@ export class AddFeesComponent implements OnInit {
   subgroupId: any;
   feeyear: any = [];
   feetype: any = [];
+  feeterm: any = [];
 
   fees: any = {
     instituteBatchId: '-1',
- 
     feeTerm: {
       id: '-1',
       name: '',
       feeYearId: {
         id: '-1'
       },
-
       effectiveDate: '',
       expiryDate: '',
     },
-
     feeType: {
       id: '-1'
     },
     feeAmount: ''
   }
 
-  updateButton: boolean = false;
+  updateButton: Boolean = false;
 
   selection: any = [];
   feeMapId: any = [];
@@ -85,14 +82,32 @@ export class AddFeesComponent implements OnInit {
     this.getFeeYear();
     this.getFeeType();
     this.getBatchs();
+    this.getFeeTerm();
   }
 
+  getFeeTerm() {
+    this.spinnerService.show();
+    this.feesService.manageFeesTerm(this.subgroupId)
+      .subscribe(response => {
+        if (response.length < 1) {
+          this.toastr.info('Data Not Found!', 'Info!');
+        } else {
+          this.feeterm = response;
+         
+        }
+        this.spinnerService.hide();
+      }, error => {
+        console.log(error);
+        this.toastr.error('An Error Occured!', 'Error!');
+        this.spinnerService.hide();
+      })
+  }
 
   getFeeYear() {
     this.spinnerService.show();
     this.feesService.fetchFeeYear()
       .subscribe(response => {
-       
+
         if (response.length < 1) {
           this.toastr.info('Data Not Found!', 'Info!');
         } else {
@@ -110,6 +125,7 @@ export class AddFeesComponent implements OnInit {
     this.spinnerService.show();
     this.feesService.fetchFees()
       .subscribe(response => {
+       
         if (response.length < 1) {
           this.toastr.info('Data Not Found!', 'Info!');
         } else {
@@ -129,7 +145,7 @@ export class AddFeesComponent implements OnInit {
     this.fees.feeTerm.effectiveDate = new DatePipe('en-IN').transform(this.fees.expiryDate, 'yyyy-MM-dd');
     this.fees.feeTerm.effectiveDate += 'T00:00:00.000Z';
     this.fees.feeTerm.expiryDate += 'T23:59:59.000Z';
-    console.log('fees',fees);
+    console.log('add-fees', fees);
     this.feesService.addFees(fees, this.subgroupId)
       .subscribe(response => {
         this.toastr.success('Fees Added Successfully!', 'Success!');
@@ -138,7 +154,7 @@ export class AddFeesComponent implements OnInit {
         console.log(error);
         this.toastr.error('Fees Added Failed!', 'Error!');
         this.spinnerService.hide();
-       })
+      })
   }
 
   getBatchs() {
@@ -147,13 +163,13 @@ export class AddFeesComponent implements OnInit {
         this.selection = response;
       })
   }
-  
+
   /**  FEES UPDATE **/
   getFees(fees_id) {
     this.feesService.getFees(fees_id)
       .subscribe(response => {
         console.log('get-fess', response);
-        this.fees = response; 
+        this.fees = response;
         this.fees.instituteBatchId = response.instituteBatchId;
         this.fees.feesTerm.feeYearId.id = response.feesTerm.feeYearId.id;
         this.fees.feeType.id = response.feeType.id;
@@ -163,23 +179,25 @@ export class AddFeesComponent implements OnInit {
         this.fees.feeterm.expiryDate += 'T06:39:22.692Z';
         this.fees.feeTerm.id = response.feeTerm.id;
         this.fees.feeTerm.name = response.feeTerm.name;
-        console.log(this.fees);
         this.updateButton = true;
+        this.spinnerService.hide();
       })
   }
 
-  updateFeeMap(){
+  updateFeeMap(fees) {
+    console.log('update fees',fees)
     this.spinnerService.show();
-    this.feesService.updateFeeMap(this.feeMapId, this.fees)
+    this.feesService.updateFeeMap(this.feeMapId, fees)
       .subscribe(response => {
+       
         this.toastr.success('Fees Updated Successfully!', 'Success!');
         this.spinnerService.hide();
       }, error => {
         console.log(error);
         this.toastr.error('Fees Updattion Failed!', 'Error!');
         this.spinnerService.hide();
-       })
-  } 
+      })
+  }
 
 
 }

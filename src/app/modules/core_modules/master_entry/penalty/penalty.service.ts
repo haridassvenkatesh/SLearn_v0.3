@@ -16,7 +16,7 @@ export class PenaltyService {
         return this.httpStatus.errorStatus(error)
       });
   }
-  
+
 
   // addPenaltyType(fees) {
   //   const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
@@ -77,7 +77,7 @@ export class PenaltyService {
   //     });
   // }
 
-   /** ADD SUB GROUP  **/
+  /** ADD SUB GROUP  **/
   //  deleteSubGroup(del_id) {
   //   const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
   //   return this.http.delete(this.constantService._base_url + 'group/subgroup/' + del_id, { headers: headers })
@@ -98,12 +98,12 @@ export class PenaltyService {
 
 
   // addPenalty(fees){
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-    // return this.http.post(this.constantService._base_url + 'group/1/subgroup', JSON.stringify(fees), { headers: headers })
-    //   .catch((error: any) => {
-    //     console.log(error);
-    //     return this.httpStatus.errorStatus(error)
-    //   });
+  // const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+  // return this.http.post(this.constantService._base_url + 'group/1/subgroup', JSON.stringify(fees), { headers: headers })
+  //   .catch((error: any) => {
+  //     console.log(error);
+  //     return this.httpStatus.errorStatus(error)
+  //   });
   // }
 
   // addPenaltyTerm(feeTerm){
@@ -115,13 +115,23 @@ export class PenaltyService {
   //     });
   // }
 
-  // managePenaltyTerm(subgroup_id){
-  //   const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
-  //   return this.http.get(this.constantService._base_url + 'group/subgroup/'+ subgroup_id +'/feeterm', { headers: headers })
-  //     .catch((error: any) => {
-  //       console.log(error);
-  //       return this.httpStatus.errorStatus(error)
-  //     });
-  // }
+  fetcthStudent(batch_id) {
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.get(this.constantService._base_url + 'batch/' + batch_id + '/Student', { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error)
+      });
+  }
+  
+  //via repoId
+  getPenalty(repoId) {
+    const headers = new HttpHeaders({ 'AccessToken': this.constantService.getCookie('AccessToken'), 'UserId': this.constantService.getCookie('UserId') });
+    return this.http.get(this.constantService._base_url + 'group/subgroup/userfee/userrepo/' + repoId, { headers: headers })
+      .catch((error: any) => {
+        console.log(error);
+        return this.httpStatus.errorStatus(error);
+      });
+  }
 
 }

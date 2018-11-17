@@ -32,9 +32,7 @@ export class AddFeetermComponent implements OnInit {
         if (params.id != params.id_1) {
           this.getFeeTerm();
         }
-        //this.updateDataID = params.id;
-
-        //  console.log('feeTearmId', this.feeTermid);
+       
       }
     })
   }
@@ -128,7 +126,7 @@ export class AddFeetermComponent implements OnInit {
   }
 
   getFeeTerm() {
-    //console.log('on it freetermid', feeTermid);
+   
     this.spinnerService.show();
     this.feesService.getFeetermId(this.feeTermId)
       .subscribe(response => {
@@ -141,7 +139,6 @@ export class AddFeetermComponent implements OnInit {
         this.feeterm.expiryDate = new DatePipe('en-IN').transform(response.expiryDate, 'yyyy-MM-dd');
         this.feeterm.effectiveDate += 'T06:39:22.692Z';
         this.feeterm.expiryDate += 'T06:39:22.692Z';
-        //console.log(this.feeterm)
         this.updateButton = true;
         this.spinnerService.hide();
       })
@@ -150,8 +147,6 @@ export class AddFeetermComponent implements OnInit {
 
   updateFeeTerm(feeterm_id) {
     this.spinnerService.show();
-    console.log(this.feeterm);
-    console.log(feeterm_id);
     this.feesService.updateFeeTerm(this.feeterm, feeterm_id)
       .subscribe(response => {
         this.toastr.success('Fee Term Updated Successfully!', 'Success!');
