@@ -1,108 +1,58 @@
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
-      <i class="fa fa-rupee"></i>Penalty
+      <i class="fa fa-rupee"></i>Add Penalty
     </div>
     <div class="card-body">
       <form class="form-horizontal">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-form-label" for="penalty.name">Penalty Name</label>
+              <label class="col-form-label" for="penalty.description">Penalty Name</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <input id="penalty.name" class="form-control" [(ngModel)]="penalty.penaltyTerm.name" id="penalty.name"
-                    name="penalty.penaltyTerm.name" placeholder="Penalty Name" type="text">
+                  <input class="form-control" [(ngModel)]="penalty.description" name="penalty.description" placeholder="Penalty Name"
+                    type="text">
                 </div>
-
               </div>
             </div>
-
             <div class="form-group">
-              <label class="col-form-label" for="appendedInput">Student Name</label>
-              <div class="controls">
-                <div class="input-group">
-                  <select [(ngModel)]="penalty.penaltyType.name" name="penalty.name" class="form-control">
-                    <option value="-1">Select Student</option>
-                    <option value="{{stu_name.repoId}}" *ngFor="let stu_name of students">{{stu_name.repoId}}</option>
-                  </select>
-                </div>
-
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label class="col-form-label" >Penalty type</label>
-              <div class="controls">
-                <div class="input-group">
-                  <select [(ngModel)]="penalty.penaltyType.name" name="penalty.name" class="form-control">
-                    <option value="-1">Select Penalty Type</option>
-                    <option value="{{pe_ty.name}}" *ngFor="let pe_ty of penaltytype">{{pe_ty.name}}</option>
-                  </select>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-form-label" for="appendedPrependedInput">Effective Date</label>
+              <label class="col-form-label" for="">Select Batch</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <ng-datepicker [(ngModel)]="penalty.penaltyTerm.effectiveDate" name="penalty.effectiveDate" class="ng_date_picker"
-                    [(options)]="options"></ng-datepicker>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="col-form-label" for="prependedInput">Select Batch</label>
-              <div class="controls">
-                <div class="input-prepend input-group">
-                  <select [(ngModel)]="penalty.penaltyTerm.instituteBatchId" name="penalty.instituteBatchId" (change)="select_student($event.target.value)" id="selection"  class="form-control">
+                  <select (change)="selectedBatch($event.target.value)" class="form-control" id="">
                     <option value="-1">-Select Batch-</option>
                     <option value="{{select.id}}" *ngFor="let select of selection">{{select.name}}</option>
                   </select>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-md-6">
             <div class="form-group">
-              <label class="col-form-label" for="prependedInput">Penalty Year</label>
+              <label class="col-form-label" for="penalty.feeAmount">Penalty Amount</label>
               <div class="controls">
                 <div class="input-prepend input-group">
-                  <select [(ngModel)]="penalty.penaltyTerm.penaltyYearId.name" name="penalty.name" class="form-control">
-                    <option value="-1">Select Penalty Year</option>
-                    <option value="{{pe_ye.name}}" *ngFor="let pe_ye of penaltyyear">{{pe_ye.name}}</option>
+                  <input class="form-control" [(ngModel)]="penalty.feeAmount" name="penalty.feeAmount" placeholder="Penalty Amount"
+                    type="number">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="">Select Student</label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select class="form-control" id="">
+                    <option value="-1">-Select Student-</option>
+                    <option value="{{_student.repoId}}" *ngFor="let _student of selection_student">{{_student.repoId}}</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-form-label" for="appendedInput">Penalty Amount</label>
-              <div class="controls">
-                <div class="input-group">
-                  <input [(ngModel)]="penalty.penaltyAmount" name="penalty.penaltyAmount" placeholder="Penalty Amount"
-                    class="form-control" type="text">
-                </div>
 
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-form-label" for="appendedPrependedInput">Expiry Date</label>
-              <div class="controls">
-                <div class="input-prepend input-group">
-                  <ng-datepicker [(ngModel)]="penalty.penaltyTerm.expiryDate" name="penalty.expiryDate" class="ng_date_picker"
-                    [(options)]="options"></ng-datepicker>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </form>
-
       <div class="card-footer">
         <button class="btn btn-sm btn-primary" type="submit" (click)="addPenalty(penalty)">
           <i class="fa fa-dot-circle-o"></i> Submit</button>

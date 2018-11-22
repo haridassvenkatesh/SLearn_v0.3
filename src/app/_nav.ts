@@ -79,6 +79,7 @@ export const navigation = [
       },
     ]
   },
+  
   {
     name: 'Fees',
     url: '/fees',
@@ -89,6 +90,13 @@ export const navigation = [
       //   url: '/fees/assign-fees',
       //   icon: 'icon-hourglass'
       // },
+      {
+        name: 'Fees Dashboard',
+        url: '/fees/fees-dashboard',
+        icon: 'icon-speedometer'
+
+      },
+
       {
         name: 'Sub Group',
         url: '/fees/add-subgroup',
@@ -131,15 +139,15 @@ export const navigation = [
       //   url: '/penalty/assign-penalty',
       //   icon: 'icon-hourglass'
       // },
-       {
-         name: 'Manage Penalty',
+      {
+        name: 'Manage Penalty',
         url: '/penalty/manage-penalty',
         icon: 'icon-hourglass'
       }
-     
+
     ]
   }
-  
+
 ];
 
 
