@@ -41,7 +41,7 @@
               <th>S.No</th>
               <th>Penalty Name</th>
               <th>Penalty Amount</th>
-              <th>Penalty Term</th>
+              <!-- <th>Penalty Term</th> -->
               <th>Penalty Paid</th>
               <th>Due Date</th>
               <th>Credit Amount</th>
@@ -52,9 +52,9 @@
           <tbody>
             <tr *ngFor="let pen of penalty; let i = index">
               <td>{{i+1}}</td>
-              <td>{{pen.feeMappingId.feeType.name}}</td>
+              <td>{{pen.description}}</td>
               <td>{{pen.feeAmount}}</td>
-              <td>{{pen.feeMappingId.feeTerm.name}}</td>
+              <!-- <td>{{pen.feeMappingId.feeTerm.name}}</td> -->
               <td>{{pen.feePaid}}</td>
               <td>{{pen.feeMappingId.feeTerm.expiryDate}}</td>
               <td>{{pen.feeCredit}}</td>
@@ -63,24 +63,9 @@
                 </a>
               </td>
             </tr>
-          </tbody>
-          <!-- <tbody>
-                <tr *ngFor="let fees of feemap; let i = index">
-                  <td>{{i+1}}</td>
-                  <td>{{fees.feeTerm.name}}</td>
-                  <td>{{fees.feeType.name}}</td>
-                  <td>{{fees.feeAmount}}</td>
-                  <td>{{fees.feeTerm.expiryDate}}</td>
-                  <td><a [routerLink]="['/penalty/edit-penalty']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a></td>
-                </tr>                                                            
-              </tbody> -->
+          </tbody>          
         </table>
       </div>
-
-
-
     </div>
   </div>
-
-
 </div>

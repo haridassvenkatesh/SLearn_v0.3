@@ -21,7 +21,9 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { ManageFeetermComponent } from './manage-feeterm/manage-feeterm.component';
 import { BatchService } from '../../master_entry/batch/batch.service';
 import { TabModule } from 'angular-tabs-component';
-  
+import { FeesDashboardComponent } from './fees-dashboard/fees-dashboard.component';
+import { ChartModule } from 'angular-highcharts';
+ 
 @NgModule({
   imports: [
     CommonModule,
@@ -34,9 +36,10 @@ import { TabModule } from 'angular-tabs-component';
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     DpDatePickerModule,
-    TabModule
+    TabModule,
+    ChartModule
   ],
-  declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent],
+  declarations: [AddFeesComponent, AssignFeesComponent, EditFeesComponent, ManageFeesComponent, AddFeetypeComponent, AddFeeyearComponent, AddSubgroupComponent, AddFeetermComponent, ManageFeetermComponent, FeesDashboardComponent],
   providers: [
   FeesService,
   BatchService

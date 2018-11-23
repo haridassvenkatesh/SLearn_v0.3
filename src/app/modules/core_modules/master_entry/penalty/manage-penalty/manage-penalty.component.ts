@@ -17,7 +17,7 @@ import { BatchService } from '../../../master_entry/batch/batch.service';
 })
 export class ManagePenaltyComponent implements OnInit {
 
-  constructor(public penaltyService: PenaltyService, private batchService: BatchService,
+  constructor(private penaltyService: PenaltyService, private batchService: BatchService,
     private spinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastsManager, vcr: ViewContainerRef,
     private constantService: ConstantService, private router: Router) {
@@ -37,7 +37,7 @@ export class ManagePenaltyComponent implements OnInit {
     this.batchService.fetchBatchDetails()
       .subscribe(response => {
         this.selection = response;
-        console.log('selection', this.selection);
+        //console.log('selection', this.selection);
       })
   }
 
@@ -45,12 +45,12 @@ export class ManagePenaltyComponent implements OnInit {
     this.penaltyService.fetchStudentsDetail(id)
       .subscribe(response => {
         this.selection_student = response;
-        console.log(this.selection_student);
+        //console.log(this.selection_student);
       })
   }
   selectedBatch(id) {
     this.getStudent(id);
-    console.log(id);
+    //console.log(id);
   }
 
   selectedRepoId(id){

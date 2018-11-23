@@ -1,0 +1,343 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-rupee"></i>Fees Dashboard
+    </div>
+    <div class="card-body">
+      <form class="form-horizontal">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="batch.id"></label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select (change)="selectedSubgroup($event.target.value)" class="form-control">
+                    <option value="-1">-Select Subgroup-</option>
+                    <option value="{{_subGroup.id}}" *ngFor="let _subGroup of subGroup">{{_subGroup.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-form-label" for="batch.id"></label>
+              <div class="controls">
+                <div class="input-prepend input-group">
+                  <select class="form-control">
+                    <option value="-1">-Select Term-</option>
+                    <option value="{{_term.name}}" *ngFor="let _term of term">{{_term.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-sm-6 col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              Fees Details
+              <div class="card-actions">
+                <a href="#" class="btn-setting">
+                  <i class="icon-settings"></i>
+                </a>
+              </div>
+            </div>
+            <div [chart]="chart" class="card-body"></div>
+            <br /><br />
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              Penalty Details
+              <div class="card-actions">
+                <a href="#" class="btn-setting">
+                  <i class="icon-settings"></i>
+                </a>
+              </div>
+            </div>
+            <div [chart]="chartPenalty" class="card-body"></div>
+            <br /><br />
+          </div>
+        </div>
+      </div>
+      <!--Fees and Penalty Cards--->
+      <div class="row">
+        <!--Fees Card -->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              Fees
+              <div class="card-actions">
+                <a href="#" class="btn-setting">
+                  <i class="icon-settings"></i>
+                </a>
+              </div>
+            </div>
+            <div class="card-body staff_events">
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="icons-list">
+                    <li>
+                      <!-- <div class="row event_row"> -->
+                      <div class="row margin_of_event">
+                        <!-- Event Icon -->
+                        <div class="col-sm-4 icon-set">
+                          <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                        </div>
+                        <div class="col-sm-8 col-sm-4 col-lg-4">
+                          <div class="margin_of_event">Hari.V</div>
+                          <div class="row dat">Due Date: 23-10-2018
+                            <br>
+                            Fees: 10000
+                          </div>
+                        </div>
+                        <div class="col-sm-4 icon-set">
+                          <i class="staff_dash_icon_p">
+                            <span class="event_icon_letter">
+                              <p>&#x2714;</p>
+                              <!--&#x2718;-->
+                            </span>
+                          </i>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="icons-list">
+                    <li>
+                      <!-- <div class="row event_row"> -->
+                      <div class="row margin_of_event">
+                        <!-- Event Icon -->
+                        <div class="col-sm-4 icon-set">
+                          <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                        </div>
+                        <div class="col-sm-8 col-sm-4 col-lg-4">
+                          <div class="margin_of_event">Sethu.J</div>
+                          <div class="row dat">Due Date: 23-11-2018
+                            <br>
+                            Fees: 10000
+                          </div>
+                        </div>
+                        <div class="col-sm-4 icon-set">
+                          <i class="staff_dash_icon_f">
+                            <span class="event_icon_letter">
+                              <p>&#x2718;</p>
+                              <!--&#x2718;-->
+                            </span>
+                          </i>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="icons-list">
+                    <li>
+                      <!-- <div class="row event_row"> -->
+                      <div class="row margin_of_event">
+                        <!-- Event Icon -->
+                        <div class="col-sm-4 icon-set">
+                          <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                        </div>
+                        <div class="col-sm-8 col-sm-4 col-lg-4">
+                          <div class="margin_of_event">Karthick.NJR</div>
+                          <div class="row dat">Due Date: 21-01-2019
+                            <br>
+                            Fees: 12000
+                          </div>
+                        </div>
+                        <div class="col-sm-4 icon-set">
+                          <i class="staff_dash_icon_p">
+                            <span class="event_icon_letter">
+                              <p>&#x2714;</p>
+                              <!--&#x2718;-->
+                            </span>
+                          </i>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <ul class="icons-list">
+                    <li>
+                      <!-- <div class="row event_row"> -->
+                      <div class="row margin_of_event">
+                        <!-- Event Icon -->
+                        <div class="col-sm-4 icon-set">
+                          <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                        </div>
+                        <div class="col-sm-8 col-sm-4 col-lg-4">
+                          <div class="margin_of_event">Mounika.K</div>
+                          <div class="row dat">Due Date: 20-01-2019
+                            <br>
+                            Fees: 20000
+                          </div>
+                        </div>
+                        <div class="col-sm-4 icon-set">
+                          <i class="staff_dash_icon_f">
+                            <span class="event_icon_letter">
+                              <p>&#x2718;</p>
+                              <!--&#x2718;-->
+                            </span>
+                          </i>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Penalty Card-->
+        <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">
+                Penalty
+                <div class="card-actions">
+                  <a href="#" class="btn-setting">
+                    <i class="icon-settings"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body staff_events">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="icons-list">
+                      <li>
+                        <!-- <div class="row event_row"> -->
+                        <div class="row margin_of_event">
+                          <!-- Event Icon -->
+                          <div class="col-sm-4 icon-set">
+                            <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                          </div>
+                          <div class="col-sm-8 col-sm-4 col-lg-4">
+                            <div class="margin_of_event">Hari.V</div>
+                            <div class="row dat">Due Date: 25-10-2018
+                              <br>
+                              Penalty: 500
+                            </div>
+                          </div>
+                          <div class="col-sm-4 icon-set">
+                            <i class="staff_dash_icon_p">
+                              <span class="event_icon_letter">
+                                <p>&#x2714;</p>
+                                <!--&#x2718;-->
+                              </span>
+                            </i>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="icons-list">
+                      <li>
+                        <!-- <div class="row event_row"> -->
+                        <div class="row margin_of_event">
+                          <!-- Event Icon -->
+                          <div class="col-sm-4 icon-set">
+                            <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                          </div>
+                          <div class="col-sm-8 col-sm-4 col-lg-4">
+                            <div class="margin_of_event">Mounika.K</div>
+                            <div class="row dat">Due Date: 27-11-2018
+                              <br>
+                              Penalty: 2000
+                            </div>
+                          </div>
+                          <div class="col-sm-4 icon-set">
+                            <i class="staff_dash_icon_f">
+                              <span class="event_icon_letter">
+                                <p>&#x2718;</p>
+                                <!--&#x2718;-->
+                              </span>
+                            </i>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="icons-list">
+                      <li>
+                        <!-- <div class="row event_row"> -->
+                        <div class="row margin_of_event">
+                          <!-- Event Icon -->
+                          <div class="col-sm-4 icon-set">
+                            <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                          </div>
+                          <div class="col-sm-8 col-sm-4 col-lg-4">
+                            <div class="margin_of_event">Karthick.NJR</div>
+                            <div class="row dat">Due Date: 21-01-2019
+                              <br>
+                              Penalty: 300
+                            </div>
+                          </div>
+                          <div class="col-sm-4 icon-set">
+                            <i class="staff_dash_icon_p">
+                              <span class="event_icon_letter">
+                                <p>&#x2714;</p>
+                                <!--&#x2718;-->
+                              </span>
+                            </i>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="icons-list">
+                      <li>
+                        <!-- <div class="row event_row"> -->
+                        <div class="row margin_of_event">
+                          <!-- Event Icon -->
+                          <div class="col-sm-4 icon-set">
+                            <img class="staff_dash_icon" src="../../../../../../assets/img/dashboard/student_32.png" alt="S">
+                          </div>
+                          <div class="col-sm-8 col-sm-4 col-lg-4">
+                            <div class="margin_of_event">Sethu.J</div>
+                            <div class="row dat">Due Date: 02-01-2019
+                              <br>
+                              Penalty: 200
+                            </div>
+                          </div>
+                          <div class="col-sm-4 icon-set">
+                            <i class="staff_dash_icon_f">
+                              <span class="event_icon_letter">
+                                <p>&#x2718;</p>
+                                <!--&#x2718;-->
+                              </span>
+                            </i>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>

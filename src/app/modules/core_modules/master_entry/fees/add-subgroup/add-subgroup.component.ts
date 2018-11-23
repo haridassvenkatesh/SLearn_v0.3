@@ -41,6 +41,7 @@ export class AddSubgroupComponent implements OnInit {
         this.toastr.info('Data Not Found!', 'Info!');
       } else {
         this.data = response;
+        console.log('data',this.data)
         this.chRef.detectChanges();
         const table:any=$('table');
         this.dataTable=table.DataTable();
