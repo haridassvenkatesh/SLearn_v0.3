@@ -42,7 +42,7 @@ export class ManagePenaltyComponent implements OnInit {
   }
 
   getStudent(id) {
-    this.penaltyService.fetcthStudent(id)
+    this.penaltyService.fetchStudentsDetail(id)
       .subscribe(response => {
         this.selection_student = response;
         console.log(this.selection_student);

@@ -167,6 +167,7 @@ export class AddFeesComponent implements OnInit {
   /**  FEES UPDATE **/
   getFees(fees_id) {
     this.feesService.getFees(fees_id)
+    
       .subscribe(response => {
         console.log('get-fess', response);
         this.fees = response;
@@ -179,9 +180,10 @@ export class AddFeesComponent implements OnInit {
         this.fees.feeterm.expiryDate += 'T06:39:22.692Z';
         this.fees.feeTerm.id = response.feeTerm.id;
         this.fees.feeTerm.name = response.feeTerm.name;
-        this.updateButton = true;
+        
         this.spinnerService.hide();
       })
+      this.updateButton = true;
   }
 
   updateFeeMap(fees) {
