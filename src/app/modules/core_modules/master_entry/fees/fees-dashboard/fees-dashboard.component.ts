@@ -6,6 +6,10 @@ import { ToastsManager } from 'ng2-toastr';
 import { Chart } from 'angular-highcharts';
 import { FeesService } from '../fees.service';
 
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
+
 
 @Component({
   selector: 'app-fees-dashboard',
@@ -21,6 +25,7 @@ export class FeesDashboardComponent implements OnInit {
   term: any = [];
   chart: any;
   chartPenalty: any = [];
+  dataTable: any;
 
   ngOnInit() {
     this.getSubGroup();
